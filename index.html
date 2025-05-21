@@ -5,165 +5,355 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lebin Liang - Portfolio</title>
     <style>
-        body {
+        /* Basic Reset & Body Styling */
+        body, html {
+            margin: 0;
+            padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            margin: 0 auto;
-            padding: 25px;
-            max-width: 850px;
-            background-color: #fdfdff;
+            line-height: 1.6;
+            background-color: #f4f4f4; /* Light gray background for the page */
             color: #333;
         }
-        .container {
-            border: 1px solid #e0e0e0;
-            padding: 30px 40px;
-            background-color: #fff;
+
+        /* Two-column Layout */
+        .two-column-layout {
+            display: flex;
+            max-width: 1200px; /* Max width of the whole layout */
+            margin: 20px auto; /* Centered with some margin */
+            background-color: #fff; /* White background for content area */
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            align-items: flex-start; 
         }
-        .header {
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 300px; /* Fixed width for sidebar */
+            padding: 25px;
+            background-color: #f8f9fa; /* Light background for sidebar */
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content in sidebar */
+            position: sticky; 
+            top: 50px; 
+            height: calc(100vh - 40px); 
+            overflow-y: auto; 
+            flex-shrink: 0; 
+        }
+        .sidebar .profile { 
             text-align: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #4A90E2;
+            width: 100%;
         }
-        .header h1 {
-            font-size: 2.4em;
-            margin-bottom: 8px;
+        .sidebar .profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid #4A90E2; /* Accent color for border */
+            margin-bottom: 15px;
+            
+            object-fit: cover;
+        }
+        .sidebar .profile h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
             color: #2c3e50;
-            font-weight: 600;
+            text-align: center;
         }
-        .header .contact-info p {
-            margin: 5px 0;
-            font-size: 0.95em;
+        .sidebar .profile .role-title {
+            font-size: 1em;
             color: #555;
+            text-align: center;
+            margin-bottom: 8px;
         }
-        .header .contact-info a {
+        .sidebar .profile .affiliation {
+            font-size: 0.9em;
+            color: #777;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .sidebar .social-links {
+            text-align: center;
+            width: 100%;
+        }
+        .sidebar .social-links p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        .sidebar .social-links a {
             color: #007bff;
             text-decoration: none;
-            margin: 0 5px;
+            display: inline-block; 
+            margin: 0 3px;
         }
-        .header .contact-info a:hover {
+        .sidebar .social-links a:hover {
             text-decoration: underline;
         }
-        .header .keywords {
-            font-size: 1em;
-            color: #0056b3;
-            margin-top: 12px;
-            font-style: italic;
+        .sidebar .social-links .icon { 
+            margin-right: 5px;
+            font-size: 1.1em; 
         }
-        nav {
-            text-align: center;
+
+
+        /* Main Content Area Styling */
+        .main-content {
+            flex: 1; 
+            padding: 25px 35px;
+        }
+        .main-content nav {
+            background-color: #e9ecef;
+            border-bottom: 1px solid #d1d5db;
             margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 4px;
         }
-        nav a {
-            margin: 0 12px;
+        .main-content nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .main-content nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .main-content nav ul li a {
             text-decoration: none;
             color: #007bff;
             font-weight: 500;
             font-size: 1.05em;
+            padding: 5px 10px;
+            border-radius: 3px;
         }
-        nav a:hover {
+        .main-content nav ul li a:hover {
             color: #0056b3;
+            background-color: #d1d5db;
         }
-        .section {
-            margin-bottom: 30px;
+
+        /* Section Styling */
+        .main-content section {
+            margin-bottom: 35px;
         }
-        .section h2 {
-            font-size: 1.6em;
+        .main-content section h2 {
+            font-size: 1.8em;
             color: #2c3e50;
-            border-bottom: 1px solid #4A90E2;
-            padding-bottom: 8px;
+            border-bottom: 2px solid #4A90E2; 
+            padding-bottom: 10px;
             margin-bottom: 20px;
             font-weight: 600;
         }
-        .item {
+        .main-content section p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .main-content section strong {
+            font-weight: 600;
+        }
+         .main-content section a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .main-content section a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Item Styling (for Education, Publications, Projects, Experience, Awards) */
+        .item { 
             margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
         }
-        .item h3 {
-            font-size: 1.25em;
+        .item:last-child {
+            border-bottom: none;
+        }
+        .item h3 { 
+            font-size: 1.3em;
             color: #333;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             font-weight: 600;
         }
-        .item .project-title {
-             font-size: 1.25em;
+        .item .project-title { 
+             font-size: 1.3em;
             color: #333;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             font-weight: 600;
         }
-        .item .role-date, .item .institution-date, .item .award-date, .item .publication-info {
-            font-size: 0.9em;
+        .item .meta-info { 
+            font-size: 0.95em;
             color: #777;
             font-style: italic;
             margin-bottom: 10px;
         }
-        .item ul {
+        .item ul { 
             list-style-type: disc;
             margin-left: 20px;
             padding-left: 5px;
             font-size: 0.95em;
         }
         .item ul li {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .item .tech-stack {
             font-size: 0.9em;
-            color: #007bff;
-            margin-top: 10px;
+            color: #0056b3;
+            margin-top: 12px;
             font-weight: 500;
         }
         .item .tech-stack strong {
             color: #343a40;
-            font-weight: 600;
         }
-        .project-media {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-left: 3px solid #4A90E2;
+
+        /* Education Item Styling */
+        .education-item {
+            display: flex;
+            align-items: center; 
         }
-        .project-media h4 {
+        .education-item .school-logo {
+            width: 80px; /* MODIFIED: Increased from 50px */
+            height: 80px; /* MODIFIED: Increased from 50px */
+            object-fit: contain;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .education-item .education-details {
+            flex: 1;
+        }
+        .education-item .education-details h3 {
+            margin-top: 0; 
+        }
+
+
+        /* Project Media Gallery Styling */
+        .project-media-gallery {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #eee; 
+        }
+        .project-media-gallery h4 { 
             margin-top: 0;
             margin-bottom: 10px;
             font-size: 1em;
             color: #333;
+            font-weight: 600;
         }
-        .project-media img {
-            max-width: 48%;
-            height: auto;
-            margin: 1%;
+        .project-media-gallery .image-container {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin-bottom: 10px;
+            justify-content: flex-start; 
+        }
+        .project-media-gallery .image-container img {
+            max-width: 250px; /* MODIFIED: Increased from 200px */
+            height: 170px; /* MODIFIED: Increased from 150px */
+            object-fit: cover; 
             border: 1px solid #ddd;
             border-radius: 4px;
-            vertical-align: middle;
+            flex-grow: 1; 
         }
-        .project-media img.single {
-            max-width: 98%;
-        }
-        .project-media p {
+        .project-media-gallery p { 
             margin-top: 10px;
-        }
-        .project-media a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .project-media a:hover {
-            text-decoration: underline;
-        }
-        .list-item {
-            margin-bottom: 10px;
             font-size: 0.95em;
         }
-        .list-item .title {
-            font-weight: 600;
-            color: #333;
+
+
+        /* Experience Item Styling (Logo on left, text on right) */
+        .experience-item { 
+            display: flex;
+            align-items: center; 
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
         }
-        .list-item .details {
+        .experience-item:last-child{
+            border-bottom: none;
+        }
+        .experience-item .company-logo {
+            width: 100px; /* MODIFIED: Increased from 60px */
+            height: 100px; /* MODIFIED: Increased from 60px */
+            object-fit: contain; 
+            margin-right: 20px;
+            border-radius: 4px;
+            flex-shrink: 0; 
+        }
+        .experience-item .experience-content {
+            flex: 1;
+        }
+        .experience-item .experience-content h3 {
+             font-size: 1.3em;
+             margin-top: 0;
+             margin-bottom: 5px;
+             font-weight: 600;
+             color: #333;
+        }
+        .experience-item .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px; 
+        }
+        .experience-item .image-container img {
+            max-width: 250px; /* MODIFIED: Increased from 150px */
+            height: 170px; /* MODIFIED: Increased from 120px */
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+
+        /* Publication Item Styling */
+        .publication-item {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .publication-item .publication-details {
+            flex: 1; 
+            margin-right: 20px; 
+        }
+        .publication-item .publication-details h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .publication-item .authors {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 3px;
+        }
+        .publication-item .conference-journal {
             font-size: 0.9em;
             color: #777;
-            display: block;
+            font-style: italic;
         }
+        .publication-item .paper-preview-img {
+            width: 120px; 
+            height: auto; 
+            max-height: 170px; 
+            object-fit: cover; 
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-shrink: 0; 
+        }
+
+
+        /* Awards List Styling */
+        .awards-list li { 
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            list-style-type: disc; 
+        }
+        .awards-list .award-title {
+            font-weight: 600;
+        }
+        .awards-list .award-details {
+            font-size: 0.9em;
+            color: #777;
+            margin-left: 5px;
+        }
+
+
+        /* Footer Styling */
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -172,215 +362,280 @@
             font-size: 0.9em;
             color: #888;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .two-column-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%; 
+                border-right: none;
+                border-bottom: 1px solid #e0e0e0;
+                padding-bottom: 20px;
+                position: static; 
+                height: auto; 
+                overflow-y: visible; 
+            }
+            .main-content {
+                padding: 20px;
+            }
+            .experience-item, .education-item, .publication-item {
+                flex-direction: column;
+            }
+            .experience-item .company-logo,
+            .education-item .school-logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+                align-self: center; 
+            }
+            .publication-item .paper-preview-img {
+                margin-top: 10px; 
+                align-self: center; 
+                width: 150px; 
+            }
+            .project-media-gallery .image-container img,
+            .experience-item .image-container img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Lebin Liang</h1>
-            <div class="contact-info">
-                <p>Shenzhen, Guangdong, China | <a href="tel:+8613610140855">+86 13610140855</a> | <a href="mailto:michael_b@qq.com">michael_b@qq.com</a></p>
+    <div class="two-column-layout">
+        <aside class="sidebar">
+            <header>
+                <div class="profile">
+                    <img src="pics/lebin_liang_profile.png" alt="Lebin Liang Profile Picture">
+                    <h1>Lebin Liang</h1>
+                    <p class="role-title">M.S. Student in Electronic Information</p>
+                    <p class="affiliation">SIAT, University of Chinese Academy of Sciences</p>
+                </div>
+                <div class="social-links">
+                    <p><span class="icon">📧</span> <a href="mailto:michael_b@qq.com">michael_b@qq.com</a></p>
+                    <p><span class="icon">📞</span> <a href="tel:+8613610140855">+86 13610140855</a></p>
+                    <p><span class="icon">🐙</span> <a href="https://github.com/LebinLiang" target="_blank">GitHub: LebinLiang</a></p>
+                    <p><span class="icon">📺</span> <a href="https://space.bilibili.com/10843076?spm_id_from=333.1296.0.0" target="_blank">Bilibili</a></p>
+                    <p><span class="icon">🔗</span> <a href="[YOUR_LINKEDIN_PROFILE_URL_HERE]" target="_blank">LinkedIn</a></p>
+                </div>
+            </header>
+        </aside>
+
+        <main class="main-content">
+            <nav>
+                <ul>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                </ul>
+            </nav>
+
+            <section id="about">
+                <h2>About Me</h2>
                 <p>
-                    <a href="https://github.com/LebinLiang" target="_blank">GitHub: LebinLiang</a>
+                    A highly motivated Master's student at SIAT, University of Chinese Academy of Sciences, specializing in Electronic Information. I possess a strong passion for mobile robotics, embedded systems, and autonomous driving, complemented by a proven ability to translate theoretical knowledge into practical, impactful projects. With extensive experience in robotics development and collaborative teamwork, I am eager to tackle challenging problems and contribute to innovative technological advancements.
                 </p>
-            </div>
-            <p class="keywords">Mobile Robotics | Embedded Systems | Hardware Design | Autonomous Driving | ROS</p>
-        </div>
+                <p>
+                    <strong>I am actively seeking overseas PhD positions for Fall 2026 enrollment or later, with a dedicated research focus on the intersection of HCI and HRI.</strong> My ambition is to contribute to pioneering research and development in intelligent autonomous systems.
+                </p>
+                 <p><a href="[LINK_TO_LEBIN_LIANG_CV.PDF_HERE]" target="_blank"><strong>View My CV (PDF)</strong></a></p>
+            </section>
 
-        <nav>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#awards-publications">Awards & Publications</a>
-            <a href="#projects">Projects & Experience</a>
-        </nav>
-
-        <div class="section" id="about">
-            <h2>About Me</h2>
-            <p>
-                A highly motivated Master's student at SIAT, University of Chinese Academy of Sciences, specializing in Electronic Information. I possess a strong passion for mobile robotics, embedded systems, and autonomous driving, complemented by a proven ability to translate theoretical knowledge into practical, impactful projects. With extensive experience in robotics development and collaborative teamwork, I am eager to tackle challenging problems and contribute to innovative technological advancements.
-            </p>
-            <p>
-                <strong>I am actively seeking overseas PhD positions for Fall 2026 enrollment or later, with a dedicated research focus on the intersection of HCI and HRI.</strong> My ambition is to contribute to pioneering research and development in intelligent autonomous systems.
-            </p>
-        </div>
-
-        <div class="section" id="education">
-            <h2>Education</h2>
-            <div class="item">
-                <h3>University of Chinese Academy of Sciences (UCAS), Shenzhen Institutes of Advanced Technology (SIAT)</h3>
-                <p class="institution-date">M.S. in Electronic Information (Expected: June 2026)</p>
-                <ul>
-                    <li>GPA: 3.77/4.0</li>
-                    <li>Admitted through Postgraduate Recommendation Program (Tuition-Waiver Scholarship)</li>
-                </ul>
-            </div>
-            <div class="item">
-                <h3>South China Agricultural University (SCAU)</h3>
-                <p class="institution-date">B.Eng. in Agricultural Mechanization and Automation (Sept 2019 - June 2023)</p>
-                <ul>
-                    <li>GPA: 4.36/5.0 (Major Rank: 1st)</li>
-                    <li>Double First-Class University Initiative Institution</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="awards-publications">
-            <h2>Awards & Publications</h2>
-            <div class="item">
-                <h3>Selected Awards</h3>
-                <ul>
-                    <li class="list-item">
-                        <span class="title">IEEE ICRA 2024 RoboMaster University Sim2Real Challenge</span>
-                        <span class="details">Second Prize (June 2024)</span>
-                    </li>
-                    <li class="list-item">
-                        <span class="title">21st National Collegiate RoboMaster Competition - Super Confrontation</span>
-                        <span class="details">National First Prize (Aug 2022)</span>
-                    </li>
-                    <li class="list-item">
-                        <span class="title">21st National Collegiate RoboMaster Competition - University League (Automated Infantry)</span>
-                        <span class="details">First Prize (Nov 2022)</span>
-                    </li>
-                    <li class="list-item">
-                        <span class="title">16th National University Smart Car Competition - iFlytek Smart Restaurant Group</span>
-                        <span class="details">National First Prize (Aug 2021)</span>
-                    </li>
-                    <li class="list-item">
-                        <span class="title">Guangdong Provincial Collegiate Electronic Design Contest</span>
-                        <span class="details">Provincial First Prize (Oct 2020)</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="item">
-                <h3>Publications</h3>
-                <ul>
-                    <li class="list-item">
-                        <span class="title">A Real-time Framework for UAV Indoor Self-Positioning and 3D Mapping Base on 2D Lidar, Stereo Camera and IMU</span> (First Author)
-                        <span class="details">IEEE RCAR 2023</span>
-                    </li>
-                    <li class="list-item">
-                        <span class="title">Design and Experiment of Navigation Control System for Translational Row Shifting of Four-Wheel Steering Boom Sprayer</span> (Second Student Author)
-                        <span class="details">Transactions of the Chinese Society for Agricultural Machinery, 2023</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="projects">
-            <h2>Projects & Experience</h2>
-
-            <div class="item">
-                <h3 class="project-title">Legged Robot Development</h3>
-                <p class="role-date">Robotics Intern @ Sony China Research Institute (RDC Shenzhen) (2025 - Present)</p>
-                <ul>
-                    <li>Designing and developing the lower-level system for legged robots, including multi-joint motor and servo control based on STM32F407.</li>
-                    <li>Responsible for PCB hardware design of driver boards, incorporating communication protocols such as CAN, high-speed RS485, and EtherCAT.</li>
-                    <li>Engaging in dynamics modeling, reinforcement learning for motion control, and Sim2Real deployment within the Isaac Lab environment for legged robots.</li>
-                    <li>Implementing safety features including online disconnection-reconnection detection, emergency power-off, and power monitoring systems.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, FreeRTOS, CAN, RS485, EtherCAT, PCB Design, Isaac Lab, Reinforcement Learning, Sim2Real, Legged Robotics</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <p><em>Photos and video links for this project will be added here by the user.</em></p>
+            <section id="education">
+                <h2>Education</h2>
+                <div class="item education-item">
+                    <img src="pics/ucas_logo.png" alt="UCAS/SIAT Logo" class="school-logo">
+                    <div class="education-details">
+                        <h3>University of Chinese Academy of Sciences (UCAS)</h3>
+                        <p class="meta-info">M.S. in Electronic Information (Sept 2023 - June 2026)</p>
+                        <ul>
+                            <li>GPA: 3.77/4.0</li>
+                            <li>Admitted through Postgraduate Recommendation Program (Tuition-Waiver Scholarship)</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="item">
-                <h3 class="project-title">4WD-4WS Autonomous Sprayer Navigation Control System</h3>
-                <p class="role-date">Project Lead (National Student Innovation and Entrepreneurship Training Program) (2021 - 2023)</p>
-                <ul>
-                    <li>Led the development of a 4-wheel-drive, 4-wheel-steering agricultural sprayer equipped with RTK-GPS and IMU for precise autonomous row shifting and omnidirectional path tracking in large-scale fields.</li>
-                    <li>Constructed an 8-DOF chassis kinematic model and implemented PID-based trajectory tracking algorithms.</li>
-                    <li>Designed the embedded controller and a comprehensive vehicle communication system integrating CAN bus and USB.</li>
-                    <li>Achieved "Excellent" project completion, secured 1 software copyright, and co-authored 1 EI-indexed research paper.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> RTK-GPS, IMU, PID Control, Kinematic Modeling, CAN Bus, STM32, C/C++</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <img src="pics/1.png" alt="Autonomous Sprayer Image 1">
-                    <img src="pics/2.png" alt="Autonomous Sprayer Image 2">
-                    <p><a href="https://www.bilibili.com/video/BV1h3411E7Sr" target="_blank">Watch Project Video (Bilibili)</a></p>
+                <div class="item education-item">
+                    <img src="pics/scau_logo.jpeg" alt="SCAU Logo" class="school-logo">
+                    <div class="education-details">
+                        <h3>South China Agricultural University (SCAU)</h3>
+                        <p class="meta-info">B.Eng. in Agricultural Mechanization and Automation (Sept 2019 - June 2023)</p>
+                        <ul>
+                            <li>GPA: 4.36/5.0 (Major Rank: 1st)</li>
+                            <li>Double First-Class University Initiative Institution</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="item">
-                <h3 class="project-title">Indoor Autonomous Quadrotor UAV System with RGBD & LiDAR Fusion</h3>
-                <p class="role-date">Individual Project (Dec 2022 - May 2023)</p>
-                <ul>
-                    <li>Developed VIO (Visual-Inertial Odometry) localization utilizing an RGBD camera for robust indoor positioning.</li>
-                    <li>Implemented precise UAV indoor position control based on the VIO localization data.</li>
-                    <li>Integrated single-line LiDAR for basic UAV navigation tasks and 3D environmental reconstruction.</li>
-                    <li>Managed UAV hardware selection, component integration, and complete system assembly.</li>
-                    <li>Deployed and calibrated VINS (Visual-Inertial Navigation System); conducted comparative analysis of VIO algorithms including ORB-SLAM2 and VINS-Mono.</li>
-                    <li>Engineered LiDAR point cloud projection transformation and constructed occupancy grid maps for navigation.</li>
-                    <li>Designed and validated the complete indoor UAV system through both simulation and real-world experiments.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> ROS, UAV, RGBD Camera, LiDAR, VIO, SLAM (VINS-Mono, ORB-SLAM2), 3D Reconstruction, Occupancy Grid Mapping, PX4, C++</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <img src="pics/10.jpg" alt="Indoor UAV Project Image 1">
-                    <img src="pics/11.gif" alt="Indoor UAV Project Image 2">
-                    <p><a href="https://www.bilibili.com/video/BV1xD4y1V7Gp" target="_blank">Watch Project Video (Bilibili)</a></p>
+            <section id="publications">
+                <h2>Publications</h2>
+                <div class="item publication-item">
+                    <div class="publication-details">
+                        <h3>A Real-time Framework for UAV Indoor Self-Positioning and 3D Mapping Base on 2D Lidar, Stereo Camera and IMU</h3>
+                        <p class="authors"><strong>Lebin Liang (First Author)</strong>, et al.</p>
+                        <p class="conference-journal">IEEE RCAR 2023</p>
+                    </div>
+                    <img src="pics/paper1.png" alt="RCAR 2023 Paper Preview" class="paper-preview-img">
                 </div>
-            </div>
-
-            <div class="item">
-                <h3 class="project-title">Autonomous Infantry Robot Development (RoboMaster Competition)</h3>
-                <p class="role-date">Navigation Team Lead @ Taurus Robotics Team (2021 - 2022)</p>
-                <ul>
-                    <li>Led the navigation group in developing an autonomous infantry robot for the RoboMaster AI Challenge.</li>
-                    <li>Implemented full-field localization and autonomous navigation using Mecanum wheel encoder odometry, IMU, and LiDAR data fusion.</li>
-                    <li>Utilized traditional computer vision techniques for enemy armor plate recognition and fully autonomous target tracking and engagement.</li>
-                    <li>Built the overall ROS-based software architecture, including a Gazebo simulation platform, and managed low-level hardware and high-level software communication.</li>
-                    <li>Optimized navigation algorithms, designing a tf-transform-based "small-gyro" (anti-rotation chassis) trajectory following algorithm with dynamic obstacle avoidance capabilities.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Gazebo, SLAM, Path Planning, Computer Vision, Mecanum Wheels, C++, Python, LiDAR, IMU</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <img src="pics/5.png" alt="RoboMaster Project Image 1">
-                    <img src="pics/6.png" alt="RoboMaster Project Image 2">
-                    <p><a href="https://www.bilibili.com/video/bv1FF411n7Y7" target="_blank">Watch Project Video (Bilibili)</a></p>
+                <div class="item publication-item">
+                    <div class="publication-details">
+                        <h3>Design and Experiment of Navigation Control System for Translational Row Shifting of Four-Wheel Steering Boom Sprayer</h3>
+                        <p class="authors">Student Co-authors, <strong>Lebin Liang (Second Student Author)</strong>, Supervisor</p>
+                        <p class="conference-journal">Transactions of the Chinese Society for Agricultural Machinery, 2023</p>
+                    </div>
+                    <img src="pics/paper2.png" alt="TCSA 2023 Paper Preview" class="paper-preview-img">
                 </div>
-            </div>
+            </section>
 
-            <div class="item">
-                <h3 class="project-title">National University Smart Car Competition</h3>
-                <p class="role-date">Team Captain / Member (2020 - 2021)</p>
-                <ul>
-                    <li>**As Captain (2021, iFlytek Smart Restaurant Group):** Led the team to develop a Mecanum wheel robot. Implemented indoor localization and multi-task allocation (QR code recognition, target detection, autonomous navigation) using LiDAR & IMU. Built a ROS-based multi-task scheduling framework with a state machine.</li>
-                    <li>**As Member (2020, Outdoor Opto-Electronic Group):** Contributed to developing an Ackermann steering car model for indoor localization and optimal multi-target path planning using LiDAR, IMU, & wheel odometry. Designed its embedded controller.</li>
-                    <li>Responsible for project management, task planning, and system integration.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Path Planning, State Machines, Embedded Control (Ackermann/Mecanum), LiDAR, IMU, QR Code Recognition, C/C++</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <img src="pics/3.jpg" alt="Smart Car Competition Image 1">
-                    <img src="pics/4.jpg" alt="Smart Car Competition Image 2">
-                    <p><a href="https://www.bilibili.com/video/BV1wf4y1N79E" target="_blank">Watch Project Video (Bilibili)</a></p>
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <img src="pics/sony_logo.png" alt="Sony Logo" class="company-logo">
+                    <div class="experience-content">
+                        <h3>SONY RDC-SZ Robot Development</h3>
+                        <p class="meta-info">Sony China Research Institute (RDC Shenzhen) - Robotics Intern (2025 - Present)</p>
+                        <ul>
+                            <li>Designing and developing the lower-level system for legged robots, including multi-joint motor and servo control based on STM32F407.</li>
+                            <li>Responsible for PCB hardware design of driver boards, incorporating communication protocols such as CAN, high-speed RS485, and EtherCAT.</li>
+                            <li>Engaging in dynamics modeling, reinforcement learning for motion control, and Sim2Real deployment within the Isaac Lab environment for legged robots.</li>
+                            <li>Implementing safety features including online disconnection-reconnection detection, emergency power-off, and power monitoring systems.</li>
+                        </ul>
+                        <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, FreeRTOS, CAN, RS485, EtherCAT, PCB Design, Isaac Lab, Reinforcement Learning, Sim2Real, Legged Robotics</p>
+                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
+                            
+                        </div>
+                    </div>
                 </div>
-            </div>
-             <div class="item">
-                <h3 class="project-title">DJI RoboMaster High School Robotics Camp</h3>
-                <p class="role-date">Embedded Systems Teaching Assistant (2019 - 2022)</p>
-                <ul>
-                    <li>Planned and organized multiple STEAM robotics summer/winter camps for over 100 high school students.</li>
-                    <li>Designed and delivered an embedded systems curriculum focused on an "Indoor Robot Logistics and Transportation" theme.</li>
-                    <li>Developed ROS driver packages for RoboMaster EP robots and created comprehensive teaching materials and tutorials.</li>
-                </ul>
-                <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Embedded Systems Education, RoboMaster EP, C/C++, Curriculum Design</p>
-                <div class="project-media">
-                    <h4>Media:</h4>
-                    <img src="pics/7.jpg" alt="DJI Camp Image 1">
-                    <img src="pics/8.jpg" alt="DJI Camp Image 2">
+                <div class="experience-item">
+                     <img src="pics/dji_logo.png" alt="DJI Logo" class="company-logo">
+                    <div class="experience-content">
+                        <h3>DJI RoboMaster High School Robotics Camp</h3>
+                        <p class="meta-info">Embedded Systems Teaching Assistant (2020 - 2022)</p>
+                        <ul>
+                            <li>Planned and organized multiple STEAM robotics summer/winter camps for over 100 high school students.</li>
+                            <li>Designed and delivered an embedded systems curriculum focused on an "Indoor Robot Logistics and Transportation" theme.</li>
+                            <li>Developed ROS driver packages for RoboMaster EP robots and created comprehensive teaching materials and tutorials.</li>
+                        </ul>
+                        <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Embedded Systems Education, RoboMaster EP, C/C++, Curriculum Design</p>
+                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
+                            <h4>Media:</h4>
+                            <div class="image-container">
+                                <img src="pics/7.jpg" alt="DJI Camp Image 1">
+                                <img src="pics/8.jpg" alt="DJI Camp Image 2">
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="item">
+                    <h3 class="project-title">4WD-4WS Autonomous Sprayer Navigation Control System</h3>
+                    <p class="meta-info">Project Lead (National Student Innovation Program) (2021 - 2023)</p>
+                    <ul>
+                        <li>Led development of an agricultural sprayer with RTK-GPS & IMU for autonomous row shifting and path tracking.</li>
+                        <li>Constructed 8-DOF chassis kinematic model and implemented PID trajectory tracking.</li>
+                        <li>Designed embedded controller and CAN/USB communication system.</li>
+                        <li>Achieved "Excellent" project completion, 1 software copyright, 1 EI paper.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> RTK-GPS, IMU, PID Control, Kinematic Modeling, CAN Bus, STM32, C/C++</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/2-1.png" alt="Autonomous Sprayer Image 1">
+                            <img src="pics/2-2.png" alt="Autonomous Sprayer Image 2">
+                            <img src="pics/2-3.png" alt="Autonomous Sprayer Image 3">
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/BV1h3411E7Sr" target="_blank">Watch Project Video (Bilibili)</a></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="project-title">Indoor Autonomous Quadrotor UAV System with RGBD & LiDAR Fusion</h3>
+                    <p class="meta-info">Individual Project (Dec 2022 - May 2023)</p>
+                    <ul>
+                        <li>Developed VIO localization using an RGBD camera for robust indoor positioning.</li>
+                        <li>Implemented precise UAV indoor position control based on VIO data.</li>
+                        <li>Integrated single-line LiDAR for basic navigation and 3D environmental reconstruction.</li>
+                        <li>Managed UAV hardware selection, integration, and assembly.</li>
+                        <li>Deployed and calibrated VINS; compared VIO algorithms (ORB-SLAM2, VINS-Mono).</li>
+                        <li>Engineered LiDAR point cloud projection and constructed occupancy grid maps.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> ROS, UAV, RGBD Camera, LiDAR, VIO, SLAM (VINS-Mono, ORB-SLAM2), 3D Reconstruction, PX4, C++</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/uav-1.jpg" alt="Indoor UAV Project Image 1">
+                            <img src="pics/uav-2.png" alt="Indoor UAV Project Image 2">
+                            <img src="pics/uav-3.jpg" alt="Indoor UAV Project Image 3">
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/BV1xD4y1V7Gp" target="_blank">Watch Project Video (Bilibili)</a></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h3 class="project-title">Autonomous Infantry Robot Development (RoboMaster Competition)</h3>
+                    <p class="meta-info">Navigation Team Lead @ Taurus Robotics Team (2021 - 2022)</p>
+                    <ul>
+                        <li>Led navigation group for autonomous infantry robot in RoboMaster AI Challenge.</li>
+                        <li>Implemented full-field localization & navigation using Mecanum wheel odometry, IMU, LiDAR.</li>
+                        <li>Utilized computer vision for enemy armor detection and autonomous engagement.</li>
+                        <li>Built ROS-based software architecture, Gazebo simulation, and hardware/software communication.</li>
+                        <li>Optimized navigation with tf-transform-based "small-gyro" trajectory following and obstacle avoidance.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Gazebo, SLAM, Path Planning, Computer Vision, Mecanum Wheels, C++, Python, LiDAR, IMU</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/rm-1.png" alt="RoboMaster Robot Image 1">
+                            <img src="pics/rm-2.png" alt="RoboMaster Robot Image 2">
+                            <img src="pics/rm-3.jpg" alt="RoboMaster Robot Image 3">
+
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/bv1FF411n7Y7" target="_blank">Watch Project Video (Bilibili)</a></p>
+                    </div>
+                </div>
+                 <div class="item">
+                    <h3 class="project-title">National University Smart Car Competition</h3>
+                    <p class="meta-info">Team Captain / Member (2020 - 2021)</p>
+                    <ul>
+                        <li>**Captain (2021, iFlytek Smart Restaurant):** Led Mecanum wheel robot development; implemented indoor localization & multi-task allocation (QR, target detection) using LiDAR & IMU; built ROS-based multi-task scheduling.</li>
+                        <li>**Member (2020, Outdoor Opto-Electronic):** Contributed to Ackermann steering car for indoor localization & path planning using LiDAR, IMU, odometry; designed embedded controller.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Path Planning, State Machines, Embedded Control, LiDAR, IMU, C/C++</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/car-3.jpg" alt="Smart Car Competition Image 1">
+                            <img src="pics/car-2.jpg" alt="Smart Car Competition Image 2">
+                            <img src="pics/car-1.jpg" alt="Smart Car Competition Image 3">
+
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/BV1wf4y1N79E" target="_blank">Watch Project Video (Bilibili)</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="awards">
+                <h2>Awards</h2>
+                <ul class="awards-list">
+                    <li><span class="award-title">IEEE ICRA 2024 RoboMaster University Sim2Real Challenge</span> <span class="award-details">- Second Prize (June 2024)</span></li>
+                    <li><span class="award-title">21st National Collegiate RoboMaster Competition - Super Confrontation</span> <span class="award-details">- National First Prize (Aug 2022)</span></li>
+                    <li><span class="award-title">21st National Collegiate RoboMaster Competition - University League (Automated Infantry)</span> <span class="award-details">- First Prize (Nov 2022)</span></li>
+                    <li><span class="award-title">16th National University Smart Car Competition - iFlytek Smart Restaurant Group</span> <span class="award-details">- National First Prize (Aug 2021)</span></li>
+                    <li><span class="award-title">Guangdong Provincial Collegiate Electronic Design Contest</span> <span class="award-details">- Provincial First Prize (Oct 2020)</span></li>
+                </ul>
+            </section>
+
+            <div class="footer">
+                <p>&copy; <span id="currentYear"></span> Lebin Liang. All rights reserved.</p>
+                <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
             </div>
-
-        </div>
-
-        <div class="footer">
-            <p>&copy; <span id="currentYear"></span> Lebin Liang. All rights reserved.</p>
-            <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
-        </div>
+        </main>
     </div>
 </body>
 </html>
