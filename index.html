@@ -496,82 +496,54 @@
                 </ul>
             </section>
 
-            <section id="publications">
-                <h2>Publications</h2>
-                <div class="item publication-item">
-                    <div class="publication-details">
-                        <h3>A Biomimetic 4WS–4WD Robotic Platform with Single-Neuron PID Control for Autonomous Field Navigation</h3>
-                        <p class="authors"><strong>Lebin Liang, Dewei Lu, Dong Li, Zilong Chen, Can Wang, and Xinyu Wu</strong></p>
-                        <p class="conference-journal"> / </p>
-                    </div>
-                    <img src="pics/robio.png" alt="RCAR 2023 Paper Preview" class="paper-preview-img">
-                </div>
-                
-                <div class="item publication-item">
-                    <div class="publication-details">
-                        <h3>A Real-time Framework for UAV Indoor Self-Positioning and 3D Mapping Base on 2D Lidar, Stereo Camera and IMU</h3>
-                        <p class="authors"><strong>Lebin Liang, Haotian Rao, Guohao Shen, Can Wang, Xinyu Wu</strong></p>
-                        <p class="conference-journal">IEEE RCAR 2023</p>
-                    </div>
-                    <img src="pics/rcar.png" alt="RCAR 2023 Paper Preview" class="paper-preview-img">
-                </div>
-                <div class="item publication-item">
-                    <div class="publication-details">
-                        <h3>Design and Experiment of Navigation Control System for Translational Row Shifting of Four-Wheel Steering Boom Sprayer</h3>
-                        <p class="authors">Student Co-authors, <strong>Lebin Liang (Second Student Author)</strong>, Supervisor</p>
-                        <p class="conference-journal">Transactions of the Chinese Society for Agricultural Machinery, 2023</p>
-                    </div>
-                    <img src="pics/paper2.png" alt="TCSA 2023 Paper Preview" class="paper-preview-img">
-                </div>
-            </section>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                <div class="experience-item">
-                    <img src="pics/sony_logo.png" alt="Sony Logo" class="company-logo">
-                    <div class="experience-content">
-                        <h3>SONY (CHINA) CO., LTD SHENZHEN BRANCH (RDC-Shenzhen)</h3>
-                        <p class="meta-info">SONY (CHINA) CO., LTD SHENZHEN BRANCH (RDC-Shenzhen) - Robotics Intern (2025 - Present)</p>
-                        <ul>
-                            <li>Designing and developing the lower-level system for legged robots, including multi-joint motor and servo control based on STM32F407.</li>
-                            <li>Responsible for PCB hardware design of driver boards, incorporating communication protocols such as CAN, high-speed RS485, and EtherCAT.</li>
-                            <li>Engaging in dynamics modeling, reinforcement learning for motion control, and Sim2Real deployment within the Isaac Lab environment for legged robots.</li>
-                            <li>Implementing safety features including online disconnection-reconnection detection, emergency power-off, and power monitoring systems.</li>
-                        </ul>
-                        <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, FreeRTOS, CAN, RS485, EtherCAT, PCB Design, Isaac Lab, Reinforcement Learning, Sim2Real, Legged Robotics</p>
-                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
-                            <h4>Media:</h4>
-                            <div class="image-container">
-                                <img src="pics/legged_robot.jpg" alt="legged_robot">
-                                <img src="pics/legged_robot2.png" alt="legged_robot">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="experience-item">
-                     <img src="pics/dji_logo.png" alt="DJI Logo" class="company-logo">
-                    <div class="experience-content">
-                        <h3>DJI (RoboMaster)</h3>
-                        <p class="meta-info">Embedded Systems Teaching Assistant (2020 - 2022)</p>
-                        <ul>
-                            <li>Planned and organized multiple STEAM robotics summer/winter camps for over 100 high school students.</li>
-                            <li>Designed and delivered an embedded systems curriculum focused on an "Indoor Robot Logistics and Transportation" theme.</li>
-                            <li>Developed ROS driver packages for RoboMaster EP robots and created comprehensive teaching materials and tutorials.</li>
-                        </ul>
-                        <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Embedded Systems Education, RoboMaster EP, C/C++, Curriculum Design</p>
-                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
-                            <h4>Media:</h4>
-                            <div class="image-container">
-                                <img src="pics/7.jpg" alt="DJI Camp Image 1">
-                                <img src="pics/8.jpg" alt="DJI Camp Image 2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        
 
             <section id="projects">
                 <h2>Projects</h2>
+
+
+                <div class="item">
+                    <h3 class="project-title">Remember-Together: Multi-Robot Collaborative VLN Framework</h3>
+                    <p class="meta-info">First Author (2024 - 2025)</p>
+                    <ul>
+                        <li>Proposed a distributed multi-robot framework for constructing long-term collaborative memory to enhance vision-language navigation (VLN) in complex indoor environments.</li>
+                        <li>Designed a probabilistic spatio-temporal consistency verification algorithm to suppress hallucinations from vision–language models (VLMs) via confidence- and similarity-based filtering.</li>
+                        <li>Developed a spatial–semantic memory graph structure organizing episodic data into object–place–event nodes for efficient retrieval and reasoning.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> Multi-Robot Systems, Vision-Language Navigation (VLN), VLMs, Probabilistic Algorithms, Spatio-Temporal Reasoning, Semantic Memory Graphs</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/VLN1.png" alt="Remember-Together Image 1">
+                            <img src="pics/VLN2.png" alt="Remember-Together Image 2">
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/BV1YCymBeEyb?spm_id_from=333.788.videopod.sections&vd_source=84628636ee4575a1bb3affbafaa3110b" target="_blank">Watch Project Video</a></p>
+                    </div>
+                </div>
+
+
+                <div class="item">
+                    <h3 class="project-title">Legged Robot Lower-Level System Development</h3>
+                    <p class="meta-info">Developer (STM32 & Robotics Project) (2021 - 2023)</p>
+                    <ul>
+                        <li>Designed and developed lower-level control system for legged robots, including multi-joint motor and servo control based on STM32F407.</li>
+                        <li>Responsible for PCB hardware design of driver boards with CAN, high-speed RS485, and EtherCAT communication protocols.</li>
+                        <li>Engaged in dynamics modeling, reinforcement learning for motion control, and Sim2Real deployment within the Isaac Lab environment.</li>
+                        <li>Implemented safety features such as online disconnection-reconnection detection, emergency power-off, and power monitoring systems.</li>
+                    </ul>
+                    <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, PCB Design, CAN, RS485, EtherCAT, Reinforcement Learning, Sim2Real, Robotics Control</p>
+                    <div class="project-media-gallery">
+                        <h4>Media:</h4>
+                        <div class="image-container">
+                            <img src="pics/legged_robot.jpg" alt="Legged Robot Image 1">
+                            <img src="pics/legged_robot2.png" alt="Legged Robot Image 2">
+                        </div>
+                        <p><a href="https://www.bilibili.com/video/BV1ZLyUBkEqw?spm_id_from=333.788.videopod.sections&vd_source=84628636ee4575a1bb3affbafaa3110b" target="_blank">Watch Project Video (Bilibili)</a></p>
+                    </div>
+                </div>
+
+                
+
                 <div class="item">
                     <h3 class="project-title">4WD-4WS Autonomous Sprayer Navigation Control System</h3>
                     <p class="meta-info">Project Lead (National Student Innovation Program) (2021 - 2023)</p>
@@ -657,6 +629,79 @@
                 </div>
             </section>
 
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="experience-item">
+                    <img src="pics/sony_logo.png" alt="Sony Logo" class="company-logo">
+                    <div class="experience-content">
+                        <h3>SONY (CHINA) CO., LTD SHENZHEN BRANCH (RDC-Shenzhen)</h3>
+                        <p class="meta-info">SONY (CHINA) CO., LTD SHENZHEN BRANCH (RDC-Shenzhen) - Robotics Intern (2025.02-08)</p>
+                        <!-- <ul>
+                            <li>Designing and developing the lower-level system for legged robots, including multi-joint motor and servo control based on STM32F407.</li>
+                            <li>Responsible for PCB hardware design of driver boards, incorporating communication protocols such as CAN, high-speed RS485, and EtherCAT.</li>
+                            <li>Engaging in dynamics modeling, reinforcement learning for motion control, and Sim2Real deployment within the Isaac Lab environment for legged robots.</li>
+                            <li>Implementing safety features including online disconnection-reconnection detection, emergency power-off, and power monitoring systems.</li>
+                        </ul>
+                        <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, FreeRTOS, CAN, RS485, EtherCAT, PCB Design, Isaac Lab, Reinforcement Learning, Sim2Real, Legged Robotics</p>
+                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
+                            <h4>Media:</h4>
+                            <div class="image-container">
+                                <img src="pics/legged_robot.jpg" alt="legged_robot">
+                                <img src="pics/legged_robot2.png" alt="legged_robot">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="experience-item">
+                     <img src="pics/dji_logo.png" alt="DJI Logo" class="company-logo">
+                    <div class="experience-content">
+                        <h3>DJI (RoboMaster)</h3>
+                        <p class="meta-info">Teach Assistant (2020 - 2022)</p>
+                        <!-- <ul>
+                            <li>Planned and organized multiple STEAM robotics summer/winter camps for over 100 high school students.</li>
+                            <li>Designed and delivered an embedded systems curriculum focused on an "Indoor Robot Logistics and Transportation" theme.</li>
+                            <li>Developed ROS driver packages for RoboMaster EP robots and created comprehensive teaching materials and tutorials.</li>
+                        </ul>
+                        <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Embedded Systems Education, RoboMaster EP, C/C++, Curriculum Design</p>
+                        <div class="project-media-gallery" style="border-top: none; padding-top: 5px;">
+                            <h4>Media:</h4>
+                            <div class="image-container">
+                                <img src="pics/7.jpg" alt="DJI Camp Image 1">
+                                <img src="pics/8.jpg" alt="DJI Camp Image 2">
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications">
+                <h2>Publications</h2>
+                <div class="item publication-item">
+                    <div class="publication-details">
+                        <h3>A Biomimetic 4WS–4WD Robotic Platform with Single-Neuron PID Control for Autonomous Field Navigation</h3>
+                        <p class="authors"><strong>Lebin Liang, Dewei Lu, Dong Li, Zilong Chen, Can Wang, and Xinyu Wu</strong></p>
+                        <p class="conference-journal"> IEEE ROBIO 2025 </p>
+                    </div>
+                    <img src="pics/robio.png" alt="ROBIO 2023 Paper Preview" class="paper-preview-img">
+                </div>
+                
+                <div class="item publication-item">
+                    <div class="publication-details">
+                        <h3>A Real-time Framework for UAV Indoor Self-Positioning and 3D Mapping Base on 2D Lidar, Stereo Camera and IMU</h3>
+                        <p class="authors"><strong>Lebin Liang, Haotian Rao, Guohao Shen, Can Wang, Xinyu Wu</strong></p>
+                        <p class="conference-journal">IEEE RCAR 2023</p>
+                    </div>
+                    <img src="pics/rcar.png" alt="RCAR 2023 Paper Preview" class="paper-preview-img">
+                </div>
+                <!-- <div class="item publication-item">
+                    <div class="publication-details">
+                        <h3>Design and Experiment of Navigation Control System for Translational Row Shifting of Four-Wheel Steering Boom Sprayer</h3>
+                        <p class="authors">Student Co-authors, <strong>Lebin Liang (Second Student Author)</strong>, Supervisor</p>
+                        <p class="conference-journal">Transactions of the Chinese Society for Agricultural Machinery, 2023</p>
+                    </div>
+                    <img src="pics/paper2.png" alt="TCSA 2023 Paper Preview" class="paper-preview-img">
+                </div> -->
+            </section>
      
 
             <div class="footer">
