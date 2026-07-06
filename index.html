@@ -37,6 +37,8 @@
             background-color: var(--bg-deep);
             color: var(--text);
             min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
 
         body::before {
@@ -150,6 +152,53 @@
             margin-right: 6px;
             opacity: 0.85;
         }
+
+        .visitor-map {
+            width: 100%;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .visitor-map-title {
+            font-family: var(--font-mono);
+            font-size: 0.72em;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .visitor-map-title::before {
+            content: '// ';
+            color: var(--accent-purple);
+        }
+
+        .visitor-map-widget {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            line-height: 0;
+        }
+
+        .visitor-map-widget a { display: block; line-height: 0; }
+
+        .visitor-map-widget img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .visitor-map-hint {
+            font-family: var(--font-mono);
+            font-size: 0.62em;
+            color: var(--text-dim);
+            margin-top: 8px;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .visitor-map-hint a { color: var(--accent); }
 
         .main-content { flex: 1; padding: 28px 36px 32px; min-width: 0; overflow-x: hidden; }
 
@@ -850,8 +899,11 @@
         @media (max-width: 768px) {
             .two-column-layout {
                 flex-direction: column;
-                margin: 12px;
-                border-radius: 8px;
+                margin: 0;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                max-width: 100%;
             }
 
             .sidebar {
@@ -860,11 +912,119 @@
                 border-bottom: 1px solid var(--border);
                 position: static;
                 height: auto;
+                overflow-y: visible;
+                padding: 20px 16px;
             }
 
-            .main-content { padding: 20px 18px; }
+            .sidebar .profile {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 14px;
+            }
 
-            .experience-item, .education-item, .publication-item { flex-direction: column; }
+            .sidebar .profile img {
+                width: 88px;
+                height: 88px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .sidebar .profile h1 {
+                font-size: 1.25em;
+                margin-bottom: 4px;
+            }
+
+            .sidebar .profile .role-title { font-size: 0.72em; margin-bottom: 4px; }
+            .sidebar .profile .affiliation { font-size: 0.78em; margin-bottom: 0; }
+
+            .sidebar .terminal-hint {
+                font-size: 0.68em;
+                padding: 8px 10px;
+                margin-bottom: 14px;
+            }
+
+            .sidebar .social-links {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2px 10px;
+            }
+
+            .sidebar .social-links p {
+                margin: 4px 0;
+                font-size: 0.78em;
+            }
+
+            .sidebar .social-links a {
+                word-break: break-word;
+            }
+
+            .visitor-map { margin-top: 14px; padding-top: 12px; }
+            .visitor-map-hint { display: none; }
+
+            .main-content {
+                padding: 16px 14px 24px;
+                overflow-x: hidden;
+            }
+
+            .main-content nav {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                margin: -16px -14px 20px;
+                padding: 8px 10px;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                background: rgba(18, 24, 32, 0.92);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .main-content nav ul {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 6px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 2px;
+            }
+
+            .main-content nav ul::-webkit-scrollbar { display: none; }
+
+            .main-content nav ul li { flex-shrink: 0; }
+
+            .main-content nav ul li a {
+                font-size: 0.72em;
+                padding: 6px 10px;
+                white-space: nowrap;
+            }
+
+            .main-content section { margin-bottom: 32px; }
+
+            .main-content section h2 {
+                font-size: 1.2em;
+                margin-bottom: 14px;
+            }
+
+            .recent-feed-header h2 { font-size: 1.2em; }
+
+            .item {
+                padding: 14px;
+                margin-bottom: 16px;
+            }
+
+            .item h3, .item .project-title { font-size: 1.05em; }
+
+            .geek-card { padding: 16px; margin-bottom: 14px; }
+            .geek-card h3 { font-size: 1.05em; }
+            .geek-card .desc { font-size: 0.88em; }
+
+            .experience-item, .education-item, .publication-item {
+                flex-direction: column;
+                padding: 14px;
+            }
 
             .experience-item .company-logo,
             .education-item .school-logo {
@@ -873,30 +1033,71 @@
                 align-self: center;
             }
 
+            .publication-item .publication-details { margin-right: 0; }
+
             .publication-item .paper-preview-img {
                 margin-top: 12px;
                 align-self: center;
-                width: 140px;
-            }
-
-            .project-media-gallery .image-container img,
-            .experience-item .image-container img {
-                max-width: 100%;
-                height: auto;
+                width: 100%;
+                max-width: 200px;
             }
 
             .geek-card-header { flex-direction: column; }
 
             .recent-card { flex: 0 0 168px; width: 168px; }
-            .media-collage.cols-2,
-            .media-collage.layout-3 { height: 120px; }
+
+            .recent-carousel-wrap::before,
+            .recent-carousel-wrap::after { width: 20px; }
 
             .media-scroll-item img {
+                height: 130px;
+                min-width: 160px;
+            }
+
+            .geek-card .media-scroll-item img {
                 height: 140px;
                 min-width: 180px;
             }
 
-            .geek-card .media-scroll-item img { height: 150px; min-width: 200px; }
+            .media-collage.cols-2,
+            .media-collage.layout-3 { height: 120px; }
+
+            .footer { margin-top: 28px; padding-top: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar .social-links {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar .profile img {
+                width: 72px;
+                height: 72px;
+            }
+
+            .sidebar .profile h1 { font-size: 1.1em; }
+
+            .main-content { padding: 14px 12px 20px; }
+
+            .main-content nav {
+                margin: -14px -12px 16px;
+            }
+
+            .main-content nav ul li a {
+                font-size: 0.68em;
+                padding: 5px 8px;
+            }
+
+            .recent-card { flex: 0 0 152px; width: 152px; }
+
+            .recent-card-desc { -webkit-line-clamp: 2; }
+
+            .item ul { margin-left: 16px; font-size: 0.88em; }
+
+            .media-scroll-item img {
+                height: 120px;
+                min-width: 140px;
+            }
         }
     </style>
 </head>
@@ -922,6 +1123,19 @@
                     <p><span class="icon">📺</span> <a href="https://space.bilibili.com/10843076?spm_id_from=333.1296.0.0" target="_blank">Bilibili</a></p>
                     <p><span class="icon">📕</span> <a href="https://www.xiaohongshu.com/user/profile/5f2fa7c1000000000100afce" target="_blank">xhs: michaellb</a></p>
                     <p><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/lebin-liang-a1251137a/" target="_blank">LinkedIn</a></p>
+                </div>
+                <!-- Visitor map: register at clustrmaps.com with lebinliang.github.io, then replace MAP_ID in the img src below -->
+                <div class="visitor-map">
+                    <p class="visitor-map-title">Global Visitors</p>
+                    <div class="visitor-map-widget">
+                        <a href="https://clustrmaps.com/site/lebinliang.github.io" target="_blank" rel="noopener" title="Visitor locations worldwide">
+                            <img
+                                src="https://clustrmaps.com/map_v2.png?cl=121820&w=a&d=lebinliang.github.io"
+                                alt="World visitor map"
+                                loading="lazy">
+                        </a>
+                    </div>
+                    <p class="visitor-map-hint">Dots show where visitors opened this page. <a href="https://clustrmaps.com/site/lebinliang.github.io" target="_blank" rel="noopener">View stats ↗</a></p>
                 </div>
             </header>
         </aside>
