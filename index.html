@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Lebin Liang - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +56,7 @@
         .two-column-layout {
             display: flex;
             max-width: 1180px;
+            width: 100%;
             margin: 24px auto;
             background-color: var(--bg-panel);
             border: 1px solid var(--border);
@@ -66,6 +67,8 @@
             z-index: 1;
             overflow: hidden;
         }
+
+        img { max-width: 100%; height: auto; }
 
         .sidebar {
             width: 280px;
@@ -152,53 +155,6 @@
             margin-right: 6px;
             opacity: 0.85;
         }
-
-        .visitor-map {
-            width: 100%;
-            margin-top: 18px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
-
-        .visitor-map-title {
-            font-family: var(--font-mono);
-            font-size: 0.72em;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
-        .visitor-map-title::before {
-            content: '// ';
-            color: var(--accent-purple);
-        }
-
-        .visitor-map-widget {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            line-height: 0;
-        }
-
-        .visitor-map-widget a { display: block; line-height: 0; }
-
-        .visitor-map-widget img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .visitor-map-hint {
-            font-family: var(--font-mono);
-            font-size: 0.62em;
-            color: var(--text-dim);
-            margin-top: 8px;
-            line-height: 1.4;
-            text-align: left;
-        }
-
-        .visitor-map-hint a { color: var(--accent); }
 
         .main-content { flex: 1; padding: 28px 36px 32px; min-width: 0; overflow-x: hidden; }
 
@@ -444,8 +400,8 @@
             display: block;
             height: 168px;
             width: auto;
-            min-width: 220px;
-            max-width: 300px;
+            min-width: 0;
+            max-width: 280px;
             object-fit: cover;
             object-position: center;
         }
@@ -464,7 +420,7 @@
             letter-spacing: 0.06em;
         }
 
-        .geek-card .media-scroll-item img { height: 180px; min-width: 240px; }
+        .geek-card .media-scroll-item img { height: 180px; max-width: 260px; }
 
         .experience-item {
             display: flex;
@@ -896,7 +852,7 @@
             color: var(--text-dim);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .two-column-layout {
                 flex-direction: column;
                 margin: 0;
@@ -904,79 +860,109 @@
                 border-left: none;
                 border-right: none;
                 max-width: 100%;
+                width: 100%;
+                overflow-x: clip;
             }
 
             .sidebar {
                 width: 100%;
+                max-width: 100%;
                 border-right: none;
                 border-bottom: 1px solid var(--border);
                 position: static;
                 height: auto;
                 overflow-y: visible;
+                overflow-x: hidden;
                 padding: 20px 16px;
+                align-items: stretch;
+                flex-shrink: 1;
+            }
+
+            .sidebar header {
+                width: 100%;
+                max-width: 100%;
             }
 
             .sidebar .profile {
-                display: flex;
+                display: grid;
+                grid-template-columns: 88px 1fr;
+                column-gap: 14px;
+                row-gap: 4px;
                 align-items: center;
                 text-align: left;
-                gap: 14px;
+                width: 100%;
             }
 
             .sidebar .profile img {
+                grid-row: 1 / span 3;
+                grid-column: 1;
                 width: 88px;
                 height: 88px;
                 margin-bottom: 0;
-                flex-shrink: 0;
             }
 
             .sidebar .profile h1 {
+                grid-column: 2;
                 font-size: 1.25em;
-                margin-bottom: 4px;
+                margin-bottom: 0;
+                min-width: 0;
+                word-break: break-word;
             }
 
-            .sidebar .profile .role-title { font-size: 0.72em; margin-bottom: 4px; }
-            .sidebar .profile .affiliation { font-size: 0.78em; margin-bottom: 0; }
+            .sidebar .profile .role-title {
+                grid-column: 2;
+                font-size: 0.72em;
+                margin-bottom: 0;
+            }
+
+            .sidebar .profile .affiliation {
+                grid-column: 2;
+                font-size: 0.78em;
+                margin-bottom: 0;
+            }
 
             .sidebar .terminal-hint {
                 font-size: 0.68em;
                 padding: 8px 10px;
                 margin-bottom: 14px;
+                overflow-x: auto;
             }
 
             .sidebar .social-links {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 2px 10px;
+                width: 100%;
             }
 
             .sidebar .social-links p {
                 margin: 4px 0;
                 font-size: 0.78em;
+                min-width: 0;
             }
 
             .sidebar .social-links a {
                 word-break: break-word;
             }
 
-            .visitor-map { margin-top: 14px; padding-top: 12px; }
-            .visitor-map-hint { display: none; }
-
             .main-content {
+                width: 100%;
+                max-width: 100%;
                 padding: 16px 14px 24px;
                 overflow-x: hidden;
+                min-width: 0;
             }
 
             .main-content nav {
                 position: sticky;
                 top: 0;
                 z-index: 100;
-                margin: -16px -14px 20px;
-                padding: 8px 10px;
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
-                background: rgba(18, 24, 32, 0.92);
+                margin: 0 0 20px;
+                padding: 8px 4px;
+                border-radius: 8px;
+                width: 100%;
+                max-width: 100%;
+                background: rgba(22, 29, 39, 0.95);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
             }
@@ -1001,29 +987,75 @@
                 white-space: nowrap;
             }
 
-            .main-content section { margin-bottom: 32px; }
+            .main-content section {
+                margin-bottom: 32px;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
 
             .main-content section h2 {
                 font-size: 1.2em;
                 margin-bottom: 14px;
             }
 
-            .recent-feed-header h2 { font-size: 1.2em; }
+            .recent-feed-header {
+                gap: 8px;
+                min-width: 0;
+            }
+
+            .recent-feed-header h2 {
+                font-size: 1.2em;
+                min-width: 0;
+                flex: 1 1 auto;
+            }
+
+            #recent { max-width: 100%; overflow: hidden; }
 
             .item {
                 padding: 14px;
                 margin-bottom: 16px;
+                max-width: 100%;
+                overflow: hidden;
             }
 
-            .item h3, .item .project-title { font-size: 1.05em; }
+            .item h3, .item .project-title {
+                font-size: 1.05em;
+                word-break: break-word;
+            }
 
-            .geek-card { padding: 16px; margin-bottom: 14px; }
-            .geek-card h3 { font-size: 1.05em; }
+            .geek-card {
+                padding: 16px;
+                margin-bottom: 14px;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .geek-card h3 { font-size: 1.05em; word-break: break-word; }
             .geek-card .desc { font-size: 0.88em; }
 
             .experience-item, .education-item, .publication-item {
                 flex-direction: column;
                 padding: 14px;
+                max-width: 100%;
+            }
+
+            .experience-item .experience-content,
+            .education-item .education-details {
+                min-width: 0;
+                width: 100%;
+            }
+
+            .experience-item .image-container img {
+                max-width: calc(50% - 5px);
+                height: auto;
+                max-height: 140px;
+            }
+
+            .main-content section p,
+            .item .meta-info,
+            .item .tech-stack {
+                overflow-wrap: break-word;
+                word-wrap: break-word;
             }
 
             .experience-item .company-logo,
@@ -1033,31 +1065,43 @@
                 align-self: center;
             }
 
-            .publication-item .publication-details { margin-right: 0; }
+            .publication-item .publication-details {
+                margin-right: 0;
+                min-width: 0;
+            }
+
+            .publication-item .publication-details h3 {
+                word-break: break-word;
+            }
 
             .publication-item .paper-preview-img {
                 margin-top: 12px;
                 align-self: center;
                 width: 100%;
                 max-width: 200px;
+                height: auto;
             }
 
-            .geek-card-header { flex-direction: column; }
+            .geek-card-header { flex-direction: column; align-items: flex-start; }
 
             .recent-card { flex: 0 0 168px; width: 168px; }
 
+            .recent-carousel-wrap {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
             .recent-carousel-wrap::before,
-            .recent-carousel-wrap::after { width: 20px; }
+            .recent-carousel-wrap::after { width: 16px; }
+
+            .media-scroll-wrap { max-width: 100%; }
 
             .media-scroll-item img {
                 height: 130px;
-                min-width: 160px;
+                max-width: 220px;
             }
 
-            .geek-card .media-scroll-item img {
-                height: 140px;
-                min-width: 180px;
-            }
+            .geek-card .media-scroll-item img { height: 140px; }
 
             .media-collage.cols-2,
             .media-collage.layout-3 { height: 120px; }
@@ -1066,8 +1110,11 @@
         }
 
         @media (max-width: 480px) {
-            .sidebar .social-links {
-                grid-template-columns: 1fr;
+            .sidebar { padding: 16px 12px; }
+
+            .sidebar .profile {
+                grid-template-columns: 72px 1fr;
+                column-gap: 12px;
             }
 
             .sidebar .profile img {
@@ -1077,11 +1124,11 @@
 
             .sidebar .profile h1 { font-size: 1.1em; }
 
-            .main-content { padding: 14px 12px 20px; }
-
-            .main-content nav {
-                margin: -14px -12px 16px;
+            .sidebar .social-links {
+                grid-template-columns: 1fr;
             }
+
+            .main-content { padding: 14px 12px 20px; }
 
             .main-content nav ul li a {
                 font-size: 0.68em;
@@ -1095,8 +1142,8 @@
             .item ul { margin-left: 16px; font-size: 0.88em; }
 
             .media-scroll-item img {
-                height: 120px;
-                min-width: 140px;
+                height: 110px;
+                max-width: 180px;
             }
         }
     </style>
@@ -1123,19 +1170,6 @@
                     <p><span class="icon">📺</span> <a href="https://space.bilibili.com/10843076?spm_id_from=333.1296.0.0" target="_blank">Bilibili</a></p>
                     <p><span class="icon">📕</span> <a href="https://www.xiaohongshu.com/user/profile/5f2fa7c1000000000100afce" target="_blank">xhs: michaellb</a></p>
                     <p><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/lebin-liang-a1251137a/" target="_blank">LinkedIn</a></p>
-                </div>
-                <!-- Visitor map: register at clustrmaps.com with lebinliang.github.io, then replace MAP_ID in the img src below -->
-                <div class="visitor-map">
-                    <p class="visitor-map-title">Global Visitors</p>
-                    <div class="visitor-map-widget">
-                        <a href="https://clustrmaps.com/site/lebinliang.github.io" target="_blank" rel="noopener" title="Visitor locations worldwide">
-                            <img
-                                src="https://clustrmaps.com/map_v2.png?cl=121820&w=a&d=lebinliang.github.io"
-                                alt="World visitor map"
-                                loading="lazy">
-                        </a>
-                    </div>
-                    <p class="visitor-map-hint">Dots show where visitors opened this page. <a href="https://clustrmaps.com/site/lebinliang.github.io" target="_blank" rel="noopener">View stats ↗</a></p>
                 </div>
             </header>
         </aside>
