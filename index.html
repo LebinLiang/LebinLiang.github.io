@@ -884,40 +884,33 @@
             }
 
             .sidebar .profile {
-                display: grid;
-                grid-template-columns: 88px 1fr;
-                column-gap: 14px;
-                row-gap: 4px;
+                display: flex;
+                flex-direction: column;
                 align-items: center;
-                text-align: left;
+                text-align: center;
                 width: 100%;
+                margin-bottom: 4px;
             }
 
             .sidebar .profile img {
-                grid-row: 1 / span 3;
-                grid-column: 1;
-                width: 88px;
-                height: 88px;
-                margin-bottom: 0;
+                width: 96px;
+                height: 96px;
+                margin-bottom: 12px;
             }
 
             .sidebar .profile h1 {
-                grid-column: 2;
-                font-size: 1.25em;
-                margin-bottom: 0;
+                font-size: 1.35em;
+                margin-bottom: 4px;
                 min-width: 0;
-                word-break: break-word;
             }
 
             .sidebar .profile .role-title {
-                grid-column: 2;
-                font-size: 0.72em;
-                margin-bottom: 0;
+                font-size: 0.78em;
+                margin-bottom: 4px;
             }
 
             .sidebar .profile .affiliation {
-                grid-column: 2;
-                font-size: 0.78em;
+                font-size: 0.82em;
                 margin-bottom: 0;
             }
 
@@ -1112,17 +1105,13 @@
         @media (max-width: 480px) {
             .sidebar { padding: 16px 12px; }
 
-            .sidebar .profile {
-                grid-template-columns: 72px 1fr;
-                column-gap: 12px;
-            }
-
             .sidebar .profile img {
-                width: 72px;
-                height: 72px;
+                width: 88px;
+                height: 88px;
+                margin-bottom: 10px;
             }
 
-            .sidebar .profile h1 { font-size: 1.1em; }
+            .sidebar .profile h1 { font-size: 1.2em; }
 
             .sidebar .social-links {
                 grid-template-columns: 1fr;
@@ -1155,7 +1144,7 @@
                 <div class="profile">
                     <img src="pics/lebin_liang_profile.jpg" alt="Lebin Liang Profile Picture">
                     <h1>Lebin Liang</h1>
-                    <p class="role-title">Engineer @ DJI 🚁</p>
+                    <p class="role-title">Engineer @ DJI </p>
                     <p class="affiliation">M.Eng. · UCAS (SIAT)</p>
                 </div>
                 <div class="terminal-hint">
@@ -1191,7 +1180,7 @@
             <section id="about">
                 <h2>About Me</h2>
                 <p>
-                    I work as an engineer at <strong>DJI</strong> 🚁, where I build embedded and robotics systems for real-world products. 
+                    I work as an engineer at <strong>DJI</strong>, where I build embedded and robotics systems for real-world products. 
                     I'm also pursuing an M.Eng. at UCAS (SIAT) and hold a B.Eng. from South China Agricultural University (major rank: 1st).
                 </p>
                 <p>
