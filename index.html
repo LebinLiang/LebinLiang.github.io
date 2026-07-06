@@ -4,403 +4,900 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lebin Liang - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic Reset & Body Styling */
+        :root {
+            --bg-deep: #0a0e14;
+            --bg-panel: #121820;
+            --bg-card: #161d27;
+            --bg-hover: #1c2533;
+            --border: #2a3544;
+            --border-glow: #3d5166;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --text-dim: #6e7681;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-cyan: #56d4dd;
+            --accent-purple: #bc8cff;
+            --accent-orange: #f0883e;
+            --font-sans: 'Space Grotesk', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4; /* Light gray background for the page */
-            color: #333;
+            font-family: var(--font-sans);
+            line-height: 1.65;
+            background-color: var(--bg-deep);
+            color: var(--text);
+            min-height: 100vh;
         }
 
-        /* Two-column Layout */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .two-column-layout {
             display: flex;
-            max-width: 1200px; /* Max width of the whole layout */
-            margin: 20px auto; /* Centered with some margin */
-            background-color: #fff; /* White background for content area */
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            align-items: flex-start; 
+            max-width: 1180px;
+            margin: 24px auto;
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(88, 166, 255, 0.05);
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
         }
 
-        /* Sidebar Styling */
         .sidebar {
-            width: 300px; /* Fixed width for sidebar */
-            padding: 25px;
-            background-color: #f8f9fa; /* Light background for sidebar */
-            border-right: 1px solid #e0e0e0;
+            width: 280px;
+            padding: 28px 22px;
+            background: linear-gradient(180deg, #0f1419 0%, var(--bg-panel) 100%);
+            border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content in sidebar */
-            position: sticky; 
-            top: 50px; 
-            height: calc(100vh - 40px); 
-            overflow-y: auto; 
-            flex-shrink: 0; 
-        }
-        .sidebar .profile { 
-            text-align: center;
-            width: 100%;
-        }
-        .sidebar .profile img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 3px solid #4A90E2; /* Accent color for border */
-            margin-bottom: 15px;
-            
-            object-fit: cover;
-        }
-        .sidebar .profile h1 {
-            font-size: 1.8em;
-            margin-bottom: 5px;
-            color: #2c3e50;
-            text-align: center;
-        }
-        .sidebar .profile .role-title {
-            font-size: 1em;
-            color: #555;
-            text-align: center;
-            margin-bottom: 8px;M.S.
-        }
-        .sidebar .profile .affiliation {
-            font-size: 0.9em;
-            color: #777;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .sidebar .social-links {
-            text-align: center;
-            width: 100%;
-        }
-        .sidebar .social-links p {
-            margin: 8px 0;
-            font-size: 0.95em;
-        }
-        .sidebar .social-links a {
-            color: #007bff;
-            text-decoration: none;
-            display: inline-block; 
-            margin: 0 3px;
-        }
-        .sidebar .social-links a:hover {
-            text-decoration: underline;
-        }
-        .sidebar .social-links .icon { 
-            margin-right: 5px;
-            font-size: 1.1em; 
-        }
-
-
-        /* Main Content Area Styling */
-        .main-content {
-            flex: 1; 
-            padding: 25px 35px;
-        }
-        .main-content nav {
-            background-color: #e9ecef;
-            border-bottom: 1px solid #d1d5db;
-            margin-bottom: 25px;
-            padding: 15px 0;
-            text-align: center;
-            border-radius: 4px;
-        }
-        .main-content nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .main-content nav ul li {
-            display: inline-block;
-            margin: 0 10px;
-        }
-        .main-content nav ul li a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: 500;
-            font-size: 1.05em;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
-        .main-content nav ul li a:hover {
-            color: #0056b3;
-            background-color: #d1d5db;
-        }
-
-        /* Section Styling */
-        .main-content section {
-            margin-bottom: 35px;
-        }
-        .main-content section h2 {
-            font-size: 1.8em;
-            color: #2c3e50;
-            border-bottom: 2px solid #4A90E2; 
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .main-content section p {
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-        .main-content section strong {
-            font-weight: 600;
-        }
-         .main-content section a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .main-content section a:hover {
-            text-decoration: underline;
-        }
-
-
-        /* Item Styling (for Education, Publications, Projects, Experience, Awards) */
-        .item { 
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
-        }
-        .item:last-child {
-            border-bottom: none;
-        }
-        .item h3 { 
-            font-size: 1.3em;
-            color: #333;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .item .project-title { 
-             font-size: 1.3em;
-            color: #333;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .item .meta-info { 
-            font-size: 0.95em;
-            color: #777;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-        .item ul { 
-            list-style-type: disc;
-            margin-left: 20px;
-            padding-left: 5px;
-            font-size: 0.95em;
-        }
-        .item ul li {
-            margin-bottom: 8px;
-        }
-        .item .tech-stack {
-            font-size: 0.9em;
-            color: #0056b3;
-            margin-top: 12px;
-            font-weight: 500;
-        }
-        .item .tech-stack strong {
-            color: #343a40;
-        }
-
-        /* Education Item Styling */
-        .education-item {
-            display: flex;
-            align-items: center; 
-        }
-        .education-item .school-logo {
-            width: 80px; /* MODIFIED: Increased from 50px */
-            height: 80px; /* MODIFIED: Increased from 50px */
-            object-fit: contain;
-            margin-right: 15px;
+            align-items: center;
+            position: sticky;
+            top: 24px;
+            height: calc(100vh - 48px);
+            overflow-y: auto;
             flex-shrink: 0;
         }
-        .education-item .education-details {
-            flex: 1;
-        }
-        .education-item .education-details h3 {
-            margin-top: 0; 
+
+        .sidebar .profile { text-align: center; width: 100%; }
+
+        .sidebar .profile img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.25);
+            margin-bottom: 16px;
+            object-fit: cover;
         }
 
-
-        /* Project Media Gallery Styling */
-        .project-media-gallery {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed #eee; 
+        .sidebar .profile h1 {
+            font-size: 1.55em;
+            margin-bottom: 6px;
+            color: #e6edf3;
+            font-weight: 700;
+            letter-spacing: -0.02em;
         }
-        .project-media-gallery h4 { 
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1em;
-            color: #333;
+
+        .sidebar .profile .role-title {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
+
+        .sidebar .profile .affiliation {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .sidebar .terminal-hint {
+            font-family: var(--font-mono);
+            font-size: 0.72em;
+            color: var(--text-dim);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 18px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar .terminal-hint .prompt { color: var(--accent-green); }
+        .sidebar .terminal-hint .cmd { color: var(--accent-cyan); }
+
+        .sidebar .social-links { text-align: left; width: 100%; }
+
+        .sidebar .social-links p {
+            margin: 6px 0;
+            font-size: 0.88em;
+            font-family: var(--font-mono);
+        }
+
+        .sidebar .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .sidebar .social-links a:hover { color: var(--accent-cyan); }
+
+        .sidebar .social-links .icon {
+            margin-right: 6px;
+            opacity: 0.85;
+        }
+
+        .main-content { flex: 1; padding: 28px 36px 32px; min-width: 0; overflow-x: hidden; }
+
+        .main-content nav {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            margin-bottom: 28px;
+            padding: 10px 12px;
+            border-radius: 8px;
+        }
+
+        .main-content nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            justify-content: center;
+        }
+
+        .main-content nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.15s;
+        }
+
+        .main-content nav ul li a:hover {
+            color: var(--accent-cyan);
+            background: var(--bg-hover);
+        }
+
+        .main-content nav ul li a.nav-geek {
+            color: var(--accent-green);
+            border: 1px solid rgba(63, 185, 80, 0.3);
+        }
+
+        .main-content nav ul li a.nav-geek:hover {
+            background: rgba(63, 185, 80, 0.1);
+            color: var(--accent-green);
+        }
+
+        .main-content section { margin-bottom: 40px; }
+
+        .main-content section h2 {
+            font-size: 1.45em;
+            color: #e6edf3;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .main-content section h2::before {
+            content: '//';
+            font-family: var(--font-mono);
+            font-size: 0.75em;
+            color: var(--accent-purple);
+            font-weight: 500;
+        }
+
+        .main-content section p { line-height: 1.75; margin-bottom: 14px; color: var(--text); }
+        .main-content section strong { color: #e6edf3; font-weight: 600; }
+
+        .main-content section a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .main-content section a:hover { color: var(--accent-cyan); text-decoration: underline; }
+
+        .item {
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: border-color 0.2s;
+        }
+
+        .item:hover { border-color: var(--border-glow); }
+
+        .item:last-child { margin-bottom: 0; }
+
+        .item h3, .item .project-title {
+            font-size: 1.15em;
+            color: #e6edf3;
+            margin-bottom: 6px;
             font-weight: 600;
         }
-        .project-media-gallery .image-container {
-            display: flex;
-            flex-wrap: wrap; 
-            gap: 10px; 
-            margin-bottom: 10px;
-            justify-content: flex-start; 
-        }
-        .project-media-gallery .image-container img {
-            max-width: 250px; /* MODIFIED: Increased from 200px */
-            height: 170px; /* MODIFIED: Increased from 150px */
-            object-fit: cover; 
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            flex-grow: 1; 
-        }
-        .project-media-gallery p { 
-            margin-top: 10px;
-            font-size: 0.95em;
+
+        .item .meta-info {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            color: var(--text-dim);
+            margin-bottom: 12px;
         }
 
+        .item ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+            font-size: 0.92em;
+            color: var(--text-muted);
+        }
 
-        /* Experience Item Styling (Logo on left, text on right) */
-        .experience-item { 
+        .item ul li { margin-bottom: 7px; }
+
+        .item .tech-stack {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            color: var(--accent-cyan);
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .item .tech-stack strong { color: var(--text-muted); }
+
+        .education-item { display: flex; align-items: center; }
+
+        .education-item .school-logo {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            margin-right: 16px;
+            flex-shrink: 0;
+            filter: brightness(0.95);
+        }
+
+        .education-item .education-details { flex: 1; }
+        .education-item .education-details h3 { margin-top: 0; }
+
+        .project-media-gallery {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .project-media-gallery h4 {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            color: var(--text-dim);
+            margin: 0 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
             display: flex;
-            align-items: center; 
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
+            justify-content: space-between;
+            align-items: center;
         }
-        .experience-item:last-child{
-            border-bottom: none;
+
+        .project-media-gallery h4 .scroll-hint,
+        .geek-media-label .scroll-hint {
+            font-size: 0.85em;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text-dim);
+            font-weight: 400;
         }
+
+        /* Shared horizontal media scroll (Projects & Geek Lab) */
+        .media-scroll-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .media-scroll-wrap::before,
+        .media-scroll-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 8px;
+            width: 24px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .media-scroll-wrap::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg-card) 30%, transparent 100%);
+        }
+
+        .media-scroll-wrap::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--bg-card) 30%, transparent 100%);
+        }
+
+        .project-media-gallery .media-scroll-wrap::before,
+        .project-media-gallery .media-scroll-wrap::after {
+            background: none;
+        }
+
+        .project-media-gallery .media-scroll-wrap::before {
+            background: linear-gradient(90deg, var(--bg-card) 30%, transparent 100%);
+        }
+
+        .project-media-gallery .media-scroll-wrap::after {
+            background: linear-gradient(270deg, var(--bg-card) 30%, transparent 100%);
+        }
+
+        .media-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 2px 2px 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-glow) transparent;
+            width: 100%;
+        }
+
+        .media-scroll::-webkit-scrollbar { height: 4px; }
+        .media-scroll::-webkit-scrollbar-track { background: transparent; }
+        .media-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-glow);
+            border-radius: 2px;
+        }
+
+        .media-scroll-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #0a0e14;
+            line-height: 0;
+        }
+
+        .media-scroll-item img {
+            display: block;
+            height: 168px;
+            width: auto;
+            min-width: 220px;
+            max-width: 300px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .geek-media-label {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            color: var(--text-dim);
+            margin: 14px 0 8px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .geek-card .media-scroll-item img { height: 180px; min-width: 240px; }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .experience-item:last-child { margin-bottom: 0; }
+
         .experience-item .company-logo {
-            width: 100px; /* MODIFIED: Increased from 60px */
-            height: 100px; /* MODIFIED: Increased from 60px */
-            object-fit: contain; 
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
             margin-right: 20px;
-            border-radius: 4px;
-            flex-shrink: 0; 
+            border-radius: 6px;
+            flex-shrink: 0;
         }
-        .experience-item .experience-content {
-            flex: 1;
-        }
+
         .experience-item .experience-content h3 {
-             font-size: 1.3em;
-             margin-top: 0;
-             margin-bottom: 5px;
-             font-weight: 600;
-             color: #333;
+            font-size: 1.1em;
+            margin: 0 0 5px;
+            color: #e6edf3;
         }
+
         .experience-item .image-container {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 10px; 
+            margin-top: 10px;
         }
+
         .experience-item .image-container img {
-            max-width: 250px; /* MODIFIED: Increased from 150px */
-            height: 170px; /* MODIFIED: Increased from 120px */
+            max-width: 240px;
+            height: 160px;
             object-fit: cover;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
         }
 
-
-        /* Publication Item Styling */
         .publication-item {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .publication-item .publication-details {
-            flex: 1; 
-            margin-right: 20px; 
-        }
+
+        .publication-item .publication-details { flex: 1; margin-right: 20px; }
+
         .publication-item .publication-details h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 3px;
+            font-size: 1.05em;
+            color: #e6edf3;
+            margin-bottom: 4px;
         }
-        .publication-item .authors {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 3px;
-        }
-        .publication-item .conference-journal {
-            font-size: 0.9em;
-            color: #777;
-            font-style: italic;
-        }
+
+        .publication-item .authors { font-size: 0.88em; color: var(--text-muted); margin-bottom: 4px; }
+        .publication-item .conference-journal { font-family: var(--font-mono); font-size: 0.78em; color: var(--accent-purple); }
+
         .publication-item .paper-preview-img {
-            width: 120px; 
-            height: auto; 
-            max-height: 170px; 
-            object-fit: cover; 
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            flex-shrink: 0; 
+            width: 110px;
+            max-height: 150px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            flex-shrink: 0;
         }
 
+        .awards-list { padding-left: 20px; color: var(--text-muted); }
+        .awards-list li { font-size: 0.92em; margin-bottom: 10px; }
+        .awards-list .award-title { color: #e6edf3; font-weight: 600; }
+        .awards-list .award-details { font-size: 0.88em; color: var(--text-dim); }
 
-        /* Awards List Styling */
-        .awards-list li { 
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            list-style-type: disc; 
+        /* Geek Projects Section */
+        .geek-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #131a24 100%);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 18px;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .awards-list .award-title {
+
+        .geek-card:hover {
+            border-color: rgba(63, 185, 80, 0.4);
+            box-shadow: 0 4px 20px rgba(63, 185, 80, 0.08);
+        }
+
+        .geek-card:last-child { margin-bottom: 0; }
+
+        .geek-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .geek-card h3 {
+            font-size: 1.15em;
+            color: #e6edf3;
+            margin: 0;
             font-weight: 600;
         }
-        .awards-list .award-details {
-            font-size: 0.9em;
-            color: #777;
-            margin-left: 5px;
+
+        .geek-card h3 .emoji { margin-right: 6px; }
+
+        .geek-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .geek-badge {
+            font-family: var(--font-mono);
+            font-size: 0.68em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
+        .geek-badge.web { background: rgba(88, 166, 255, 0.15); color: var(--accent); border: 1px solid rgba(88, 166, 255, 0.3); }
+        .geek-badge.embedded { background: rgba(240, 136, 62, 0.12); color: var(--accent-orange); border: 1px solid rgba(240, 136, 62, 0.3); }
+        .geek-badge.oss { background: rgba(63, 185, 80, 0.12); color: var(--accent-green); border: 1px solid rgba(63, 185, 80, 0.3); }
 
-        /* Footer Styling */
+        .geek-card .desc {
+            color: var(--text-muted);
+            font-size: 0.92em;
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+
+        .geek-features {
+            list-style: none;
+            margin: 0 0 16px;
+            padding: 0;
+        }
+
+        .geek-features li {
+            font-size: 0.88em;
+            color: var(--text-muted);
+            padding: 4px 0 4px 18px;
+            position: relative;
+        }
+
+        .geek-features li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            font-family: var(--font-mono);
+            color: var(--accent-green);
+            font-size: 0.85em;
+        }
+
+        .geek-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .geek-link {
+            font-family: var(--font-mono);
+            font-size: 0.78em;
+            padding: 7px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .geek-link.github {
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+        }
+
+        .geek-link.github:hover {
+            background: rgba(88, 166, 255, 0.2);
+            color: #79b8ff;
+            text-decoration: none;
+        }
+
+        .geek-link.demo {
+            background: rgba(63, 185, 80, 0.1);
+            color: var(--accent-green);
+            border: 1px solid rgba(63, 185, 80, 0.3);
+        }
+
+        .geek-link.demo:hover {
+            background: rgba(63, 185, 80, 0.2);
+            color: #56d364;
+            text-decoration: none;
+        }
+
+        .geek-card-images.media-collage {
+            margin-top: 14px;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .geek-card-images.media-collage.cols-2 { height: 160px; }
+        .geek-card-images.media-collage.featured { height: auto; border-bottom: none; }
+        .geek-card-images.media-collage.featured img {
+            height: auto;
+            max-height: 240px;
+            object-fit: contain;
+            background: #0a0e14;
+        }
+
+        /* Media collage — shared拼图 grid */
+        .media-collage {
+            display: grid;
+            gap: 3px;
+            overflow: hidden;
+            background: var(--border);
+        }
+
+        .media-collage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 0;
+        }
+
+        .media-collage.cols-2 {
+            grid-template-columns: 1fr 1fr;
+            height: 150px;
+        }
+
+        .media-collage.single {
+            height: 150px;
+        }
+
+        .media-collage.single img { height: 100%; }
+
+        .media-collage.layout-3 {
+            grid-template-columns: 1.15fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 150px;
+        }
+
+        .media-collage.layout-3 img:first-child { grid-row: 1 / 3; }
+
+        .media-collage.grid-2x2 {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 160px;
+        }
+
+        .media-collage.layout-5 {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: 1fr 1fr;
+            height: 180px;
+        }
+
+        .media-collage.layout-5 img:nth-child(1) { grid-column: 1 / 4; }
+        .media-collage.layout-5 img:nth-child(2) { grid-column: 4 / 7; }
+        .media-collage.layout-5 img:nth-child(3) { grid-column: 1 / 3; }
+        .media-collage.layout-5 img:nth-child(4) { grid-column: 3 / 5; }
+        .media-collage.layout-5 img:nth-child(5) { grid-column: 5 / 7; }
+
+        .recent-card .media-collage { border-bottom: 1px solid var(--border); }
+
+        .project-media-gallery .image-container.media-collage {
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .project-media-gallery .image-container.media-collage.grid-2x2 { height: 200px; }
+        .project-media-gallery .image-container.media-collage.layout-5 { height: 200px; }
+
+        /* Recent Highlights — LinkedIn-style horizontal feed */
+        #recent { overflow: hidden; max-width: 100%; }
+
+        .recent-feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .recent-feed-header h2 { margin-bottom: 0; }
+
+        .recent-scroll-hint {
+            font-family: var(--font-mono);
+            font-size: 0.68em;
+            color: var(--text-dim);
+            white-space: nowrap;
+        }
+
+        .recent-carousel-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .recent-carousel-wrap::before,
+        .recent-carousel-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 32px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .recent-carousel-wrap::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--bg-panel) 20%, transparent 100%);
+        }
+
+        .recent-carousel-wrap::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--bg-panel) 20%, transparent 100%);
+        }
+
+        .recent-carousel {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 2px 2px 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-glow) transparent;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .recent-carousel::-webkit-scrollbar { height: 5px; }
+        .recent-carousel::-webkit-scrollbar-track { background: transparent; }
+        .recent-carousel::-webkit-scrollbar-thumb {
+            background: var(--border-glow);
+            border-radius: 3px;
+        }
+
+        .recent-card {
+            flex: 0 0 200px;
+            width: 200px;
+            scroll-snap-align: start;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recent-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .recent-card-thumb {
+            aspect-ratio: 4 / 3;
+            width: 100%;
+            overflow: hidden;
+            background: #0a0e14;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .recent-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .recent-card-body {
+            padding: 10px 12px 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recent-card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.62em;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 5px;
+        }
+
+        .recent-card-title {
+            font-size: 0.82em;
+            font-weight: 600;
+            color: #e6edf3;
+            line-height: 1.35;
+            margin: 0 0 5px;
+        }
+
+        .recent-card-desc {
+            font-size: 0.74em;
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin: 0 0 8px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .recent-card-date {
+            font-family: var(--font-mono);
+            font-size: 0.68em;
+            color: var(--text-dim);
+            margin-top: auto;
+        }
+
         .footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 36px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
-            font-size: 0.9em;
-            color: #888;
+            border-top: 1px solid var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.75em;
+            color: var(--text-dim);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .two-column-layout {
                 flex-direction: column;
+                margin: 12px;
+                border-radius: 8px;
             }
+
             .sidebar {
-                width: 100%; 
+                width: 100%;
                 border-right: none;
-                border-bottom: 1px solid #e0e0e0;
-                padding-bottom: 20px;
-                position: static; 
-                height: auto; 
-                overflow-y: visible; 
+                border-bottom: 1px solid var(--border);
+                position: static;
+                height: auto;
             }
-            .main-content {
-                padding: 20px;
-            }
-            .experience-item, .education-item, .publication-item {
-                flex-direction: column;
-            }
+
+            .main-content { padding: 20px 18px; }
+
+            .experience-item, .education-item, .publication-item { flex-direction: column; }
+
             .experience-item .company-logo,
             .education-item .school-logo {
                 margin-right: 0;
-                margin-bottom: 10px;
-                align-self: center; 
+                margin-bottom: 12px;
+                align-self: center;
             }
+
             .publication-item .paper-preview-img {
-                margin-top: 10px; 
-                align-self: center; 
-                width: 150px; 
+                margin-top: 12px;
+                align-self: center;
+                width: 140px;
             }
+
             .project-media-gallery .image-container img,
             .experience-item .image-container img {
                 max-width: 100%;
                 height: auto;
             }
-        }
 
+            .geek-card-header { flex-direction: column; }
+
+            .recent-card { flex: 0 0 168px; width: 168px; }
+            .media-collage.cols-2,
+            .media-collage.layout-3 { height: 120px; }
+
+            .media-scroll-item img {
+                height: 140px;
+                min-width: 180px;
+            }
+
+            .geek-card .media-scroll-item img { height: 150px; min-width: 200px; }
+        }
     </style>
 </head>
 <body>
@@ -408,16 +905,22 @@
         <aside class="sidebar">
             <header>
                 <div class="profile">
-                    <img src="pics/lebin_liang_profile.png" alt="Lebin Liang Profile Picture">
+                    <img src="pics/lebin_liang_profile.jpg" alt="Lebin Liang Profile Picture">
                     <h1>Lebin Liang</h1>
-                    <p class="role-title">M.Eng. Student in Electronic Information</p>
-                    <p class="affiliation">SIAT, University of Chinese Academy of Sciences</p>
+                    <p class="role-title">Engineer @ DJI 🚁</p>
+                    <p class="affiliation">M.Eng. · UCAS (SIAT)</p>
+                </div>
+                <div class="terminal-hint">
+                    <span class="prompt">~</span> <span class="cmd">cat interests.txt</span><br>
+                    mobile robots, HCI, RL, film, LEDs
                 </div>
                 <div class="social-links">
                     <p><span class="icon">📧</span> <a href="mailto:michael_b@qq.com">michael_b@qq.com</a></p>
                     <p><span class="icon">📞</span> <a href="tel:+8613610140855">+86 13610140855</a></p>
                     <p><span class="icon">🐙</span> <a href="https://github.com/LebinLiang" target="_blank">GitHub: LebinLiang</a></p>
+                    <p><span class="icon">🎓</span> <a href="https://scholar.google.com/citations?user=nnotU2MAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a></p>
                     <p><span class="icon">📺</span> <a href="https://space.bilibili.com/10843076?spm_id_from=333.1296.0.0" target="_blank">Bilibili</a></p>
+                    <p><span class="icon">📕</span> <a href="https://www.xiaohongshu.com/user/profile/5f2fa7c1000000000100afce" target="_blank">xhs: michaellb</a></p>
                     <p><span class="icon">🔗</span> <a href="https://www.linkedin.com/in/lebin-liang-a1251137a/" target="_blank">LinkedIn</a></p>
                 </div>
             </header>
@@ -426,34 +929,317 @@
         <main class="main-content">
             <nav>
                 <ul>
-                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#recent">Recent</a></li>
+                    <li><a href="#geek" class="nav-geek">Geek Lab</a></li>
                     <li><a href="#education">Education</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#awards">Awards</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#publications">Papers</a></li>
                 </ul>
             </nav>
 
             <section id="about">
                 <h2>About Me</h2>
                 <p>
-                    I am a Master's student at the University of Chinese Academy of Sciences, based at the Shenzhen Institute of Advanced Technology (SIAT), advised by 
-                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=9cINn5wAAAAJ" target="_blank">Prof. Can Wang</a> 
-                    and 
-                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=9Tc-XSwAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Prof. Xinyu Wu</a>. 
-                    I received my B.Eng. degree in Agricultural Mechanization and Automation from South China Agricultural University, where I ranked first in my cohort under the supervision of 
-                    <a href="https://scholar.google.com/citations?hl=zh-CN&user=CeOiwc8AAAAJ" target="_blank">Prof. Zhiyan Zhou</a> 
-                    and 
-                    <a href="https://ieeexplore.ieee.org/author/37065838900" target="_blank">Academician Prof. Xiwen Luo</a>.
+                    I work as an engineer at <strong>DJI</strong> 🚁, where I build embedded and robotics systems for real-world products. 
+                    I'm also pursuing an M.Eng. at UCAS (SIAT) and hold a B.Eng. from South China Agricultural University (major rank: 1st).
                 </p>
                 <p>
-                    My research interests lie in mobile robotics, embedded systems, autonomous driving, and embodied intelligence, with a particular emphasis on human–computer interaction (HCI) and human–robot interaction (HRI). I also explore reinforcement learning as a means to enable adaptive decision-making and improve robot autonomy. I have a strong track record of translating theoretical foundations into practical robotic platforms and real-world experiments, demonstrating both technical depth and interdisciplinary collaboration skills.
+                    My path runs through RoboMaster, competition robots, and R&amp;D at Sony and DJI — spanning mobile robotics, embodied intelligence, HCI/HRI, and reinforcement learning. 
+                    Off the bench, I'm a film photographer 📷 and maker; I open-source tools like FilmScan Pro and ESP32 spectrum lights (<a href="#geek">Geek Lab</a>). 
+                    I'm drawn to entrepreneurship 🚀 — turning prototypes into products people actually use.
                 </p>
                  <p><a href="cv/LebinLiang_cv_.pdf" target="_blank"><strong>View My CV (PDF)</strong></a></p>
                  <p><a href="cv/LebinLiang_RS_.pdf" target="_blank"><strong>View My RS (PDF)</strong></a></p>
 
 
+            </section>
+
+            <section id="recent">
+                <div class="recent-feed-header">
+                    <h2>Recent Highlights</h2>
+                    <span class="recent-scroll-hint">scroll →</span>
+                </div>
+                <div class="recent-carousel-wrap">
+                    <div class="recent-carousel">
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/中古翻页钟修复esp32_IMG20260704124022.jpg" alt="Flip clock restore complete"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Maker</div>
+                                <p class="recent-card-title">Flip Clock Restore</p>
+                                <p class="recent-card-desc">Vintage split-flap clock restored — ESP32 firmware brings it back to life.</p>
+                                <span class="recent-card-date">Jul 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/中古翻页钟修复esp32_IMG20260702130840.jpg" alt="Flip clock wiring"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Maker</div>
+                                <p class="recent-card-title">Flip Clock Wiring</p>
+                                <p class="recent-card-desc">Opened the shell and wired an ESP32 board to drive the flip mechanism.</p>
+                                <span class="recent-card-date">Jul 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/esp音效频谱灯.gif" alt="ESP32 audio reactive LED"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Open Source</div>
+                                <p class="recent-card-title">ESP32 Spectrum LED</p>
+                                <p class="recent-card-desc">Audio-reactive LED strip — FFT splits frequencies to drive WS2812B zones.</p>
+                                <span class="recent-card-date">Jul 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/cursor_coffeechat_IMG20260626140853.jpg" alt="Cursor coffee chat"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Community</div>
+                                <p class="recent-card-title">Cursor Coffee Chat</p>
+                                <p class="recent-card-desc">Shenzhen Cursor offline meetup — swapping AI coding workflows with builders.</p>
+                                <span class="recent-card-date">Jun 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/cursor_coffeechat_wx_camera_1782454342045.jpg" alt="Cursor meetup group"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Community</div>
+                                <p class="recent-card-title">Cursor Meetup</p>
+                                <p class="recent-card-desc">Group photo from the Cursor community gathering — builders in one room.</p>
+                                <span class="recent-card-date">Jun 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/UAV_project_IMG20260609175225.jpg" alt="UAV field test"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Project</div>
+                                <p class="recent-card-title">UAV Field Test</p>
+                                <p class="recent-card-desc">Outdoor flight test of the indoor quadrotor — VIO positioning and hover control.</p>
+                                <span class="recent-card-date">Jun 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/UAV_project_IMG20260609175018.jpg" alt="UAV project setup"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Project</div>
+                                <p class="recent-card-title">UAV Setup</p>
+                                <p class="recent-card-desc">On-site tuning of the RGBD + LiDAR fusion stack on the UAV platform.</p>
+                                <span class="recent-card-date">Jun 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/nus_visit_IMG20260427140246.jpg" alt="NUS visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">NUS</p>
+                                <p class="recent-card-desc">Campus visit to the National University of Singapore.</p>
+                                <span class="recent-card-date">Apr 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/ntu_visit_IMG20260427124250.jpg" alt="NTU visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">NTU</p>
+                                <p class="recent-card-desc">Touring Nanyang Technological University and its robotics research labs.</p>
+                                <span class="recent-card-date">Apr 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/filmscan_IMG20260224200509.jpg" alt="FilmScan Pro in use"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Open Source</div>
+                                <p class="recent-card-title">FilmScan Pro</p>
+                                <p class="recent-card-desc">Scanning 35mm negatives with a phone — real-time mask removal and inversion.</p>
+                                <span class="recent-card-date">Feb 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/filmscan_Screenshot_2026-02-23-00-11-53-76_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="FilmScan Pro screenshot"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Open Source</div>
+                                <p class="recent-card-title">FilmScan Demo</p>
+                                <p class="recent-card-desc">FilmScan Pro in the browser — fully local processing, no app install needed.</p>
+                                <span class="recent-card-date">Feb 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/VLN_project_IMG20260118101025.jpg" alt="VLN project demo"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Research</div>
+                                <p class="recent-card-title">VLN Demo</p>
+                                <p class="recent-card-desc">Remember-Together multi-robot VLN framework demo in an indoor environment.</p>
+                                <span class="recent-card-date">Jan 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/VLN_project_IMG20260118100938.jpg" alt="VLN testbed"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Research</div>
+                                <p class="recent-card-title">VLN Testbed</p>
+                                <p class="recent-card-desc">Multi-robot testbed setup for collaborative vision-language navigation.</p>
+                                <span class="recent-card-date">Jan 2026</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/cathay_hackathon_IMG20251116180149.jpg" alt="Cathay hackathon demo"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Hackathon</div>
+                                <p class="recent-card-title">Cathay Demo Day</p>
+                                <p class="recent-card-desc">Final presentation at the Cathay Pacific hackathon — pitching our aviation solution.</p>
+                                <span class="recent-card-date">Nov 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/cathay_hackathon_IMG20251115101953.jpg" alt="Cathay hackathon team"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Hackathon</div>
+                                <p class="recent-card-title">Cathay Team</p>
+                                <p class="recent-card-desc">Late-night build session with the team, polishing the hackathon prototype.</p>
+                                <span class="recent-card-date">Nov 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/cathay_hackathon_IMG20251115092739.jpg" alt="Cathay hackathon kickoff"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Hackathon</div>
+                                <p class="recent-card-title">Cathay Kickoff</p>
+                                <p class="recent-card-desc">Cathay Pacific hackathon opening — 48-hour aviation innovation sprint begins.</p>
+                                <span class="recent-card-date">Nov 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/windows_visit.jpg" alt="Microsoft visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">Microsoft</p>
+                                <p class="recent-card-desc">Microsoft office visit — exploring software ecosystems and intelligent devices.</p>
+                                <span class="recent-card-date">Oct 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/google_visit.jpg" alt="Google visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">Google</p>
+                                <p class="recent-card-desc">Google campus tour — discussing AI and embedded systems with engineers.</p>
+                                <span class="recent-card-date">Oct 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/aws_visit_IMG20251025132138.jpg" alt="AWS visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">AWS</p>
+                                <p class="recent-card-desc">AWS office visit — cloud infrastructure for robotics data pipelines.</p>
+                                <span class="recent-card-date">Oct 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/google_visit_IMG20251025102704.jpg" alt="Google office"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">Google Campus</p>
+                                <p class="recent-card-desc">Another angle from the Google visit — iconic campus and engineering culture.</p>
+                                <span class="recent-card-date">Oct 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/visit_cathay_szoffice_IMG20250920160959_1.jpg" alt="Cathay Shenzhen office"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">Cathay SZ Office</p>
+                                <p class="recent-card-desc">Visit to Cathay Pacific's Shenzhen office ahead of the hackathon season.</p>
+                                <span class="recent-card-date">Sep 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/visit_hkust_IMG20250725102223.jpg" alt="HKUST visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">HKUST</p>
+                                <p class="recent-card-desc">Hong Kong University of Science and Technology campus visit.</p>
+                                <span class="recent-card-date">Jul 2025</span>
+                            </div>
+                        </article>
+                        <article class="recent-card">
+                            <div class="recent-card-thumb"><img src="pics/visit_hkcrc_2025_7_.jpg" alt="HKCRC visit"></div>
+                            <div class="recent-card-body">
+                                <div class="recent-card-tag">Visit</div>
+                                <p class="recent-card-title">HKCRC</p>
+                                <p class="recent-card-desc">Hong Kong Cyberport Robotics Centre — exploring the local robotics scene.</p>
+                                <span class="recent-card-date">Jul 2025</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="geek">
+                <h2>Geek Lab</h2>
+
+                <div class="geek-card">
+                    <div class="geek-card-header">
+                        <h3><span class="emoji">🎞️</span>FilmScan Pro</h3>
+                        <div class="geek-badges">
+                            <span class="geek-badge web">Web</span>
+                            <span class="geek-badge oss">Open Source</span>
+                        </div>
+                    </div>
+                    <p class="desc">A browser-based film negative scanner — point your phone at negatives for real-time positive previews and orange mask balancing. Pure HTML/JS, fully local processing, no install required. Built for film shooters who want instant feedback before lab scanning.</p>
+                    <div class="geek-links">
+                        <a href="https://github.com/LebinLiang/film_scan" target="_blank" class="geek-link github">GitHub ↗</a>
+                        <a href="https://lebinliang.github.io/film_scan/" target="_blank" class="geek-link demo">Live Demo ↗</a>
+                    </div>
+                    <div class="geek-media-label">Media <span class="scroll-hint">scroll →</span></div>
+                    <div class="media-scroll-wrap">
+                        <div class="media-scroll">
+                            <div class="media-scroll-item"><img src="pics/filmscan_Screenshot_2026-02-23-00-11-53-76_40deb401b9ffe8e1df2f1cc5ba480b12.jpg" alt="FilmScan Pro app screenshot"></div>
+                            <div class="media-scroll-item"><img src="pics/filmscan_IMG20260224200509.jpg" alt="FilmScan Pro in use"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="geek-card">
+                    <div class="geek-card-header">
+                        <h3><span class="emoji">🎶</span>ESP32 Audio-Reactive LED</h3>
+                        <div class="geek-badges">
+                            <span class="geek-badge embedded">ESP32</span>
+                            <span class="geek-badge oss">Open Source</span>
+                        </div>
+                    </div>
+                    <p class="desc">Audio-reactive ambient light on ESP32 — I2S mic captures sound, FFT drives six WS2812B zones with VU meters, rainbow, and chase effects. Tune noise floor and peak levels from a web UI over the built-in WiFi hotspot. Open-source firmware, no cloud needed.</p>
+                    <div class="geek-links">
+                        <a href="https://github.com/LebinLiang/ESP32-Audio-LED-" target="_blank" class="geek-link github">GitHub ↗</a>
+                    </div>
+                    <div class="geek-media-label">Media <span class="scroll-hint">scroll →</span></div>
+                    <div class="media-scroll-wrap">
+                        <div class="media-scroll">
+                            <div class="media-scroll-item"><img src="pics/esp音效频谱灯.gif" alt="ESP32 audio-reactive LED spectrum demo"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="geek-card">
+                    <div class="geek-card-header">
+                        <h3><span class="emoji">🕰️</span>Vintage Flip Clock · ESP32 Restore</h3>
+                        <div class="geek-badges">
+                            <span class="geek-badge embedded">ESP32</span>
+                            <span class="geek-badge oss">Maker</span>
+                        </div>
+                    </div>
+                    <p class="desc">A vintage split-flap clock restored with ESP32 and custom firmware — rewired the internals while keeping the original mid-century shell. A weekend maker project bridging retro aesthetics and modern embedded control.</p>
+                    <div class="geek-links">
+                        <a href="https://github.com/LebinLiang/esp32s3-flip-clock" target="_blank" class="geek-link github">GitHub ↗</a>
+                    </div>
+                    <div class="geek-media-label">Media <span class="scroll-hint">scroll →</span></div>
+                    <div class="media-scroll-wrap">
+                        <div class="media-scroll">
+                            <div class="media-scroll-item"><img src="pics/中古翻页钟修复esp32_IMG20260702130840.jpg" alt="Flip clock restore in progress"></div>
+                            <div class="media-scroll-item"><img src="pics/中古翻页钟修复esp32_IMG20260704124022.jpg" alt="Flip clock restore complete"></div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="education">
@@ -470,7 +1256,7 @@
                     </div>
                 </div>
                 <div class="item education-item">
-                    <img src="pics/scau_logo.jpeg" alt="SCAU Logo" class="school-logo">
+                    <img src="pics/scau_logo.png" alt="SCAU Logo" class="school-logo">
                     <div class="education-details">
                         <h3>South China Agricultural University (SCAU)</h3>
                         <p class="meta-info">B.Eng. in Agricultural Mechanization and Automation (Sept 2019 - June 2023)</p>
@@ -482,7 +1268,7 @@
                 </div>
             </section>
 
-            <section id="Honors and Awards">
+            <section id="awards">
                 <h2>Awards</h2>
                 <ul class="awards-list">
                     <li><span class="award-title">National Scholarship for Undergraduates</span> <span class="award-details">- Ministry of Education of China (Oct 2020)</span></li>
@@ -512,10 +1298,14 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> Multi-Robot Systems, Vision-Language Navigation (VLN), VLMs, Probabilistic Algorithms, Spatio-Temporal Reasoning, Semantic Memory Graphs</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/VLN1.png" alt="Remember-Together Image 1">
-                            <img src="pics/VLN2.png" alt="Remember-Together Image 2">
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/VLN1.png" alt="Remember-Together diagram 1"></div>
+                                <div class="media-scroll-item"><img src="pics/VLN2.png" alt="Remember-Together diagram 2"></div>
+                                <div class="media-scroll-item"><img src="pics/VLN_project_IMG20260118100938.jpg" alt="VLN project demo 1"></div>
+                                <div class="media-scroll-item"><img src="pics/VLN_project_IMG20260118101025.jpg" alt="VLN project demo 2"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/BV1YCymBeEyb?spm_id_from=333.788.videopod.sections&vd_source=84628636ee4575a1bb3affbafaa3110b" target="_blank">Watch Project Video</a></p>
                     </div>
@@ -533,10 +1323,14 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> STM32F407, PCB Design, CAN, RS485, EtherCAT, Reinforcement Learning, Sim2Real, Robotics Control</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/legged_robot.jpg" alt="Legged Robot Image 1">
-                            <img src="pics/legged_robot2.png" alt="Legged Robot Image 2">
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/legged_robot.jpg" alt="Legged robot hardware"></div>
+                                <div class="media-scroll-item"><img src="pics/legged_robot.gif" alt="Legged robot simulation"></div>
+                                <div class="media-scroll-item"><img src="pics/legged_robot2.gif" alt="Legged robot control demo"></div>
+                                <div class="media-scroll-item"><img src="pics/legged_robot_real.gif" alt="Legged robot real-world test"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/BV1ZLyUBkEqw?spm_id_from=333.788.videopod.sections&vd_source=84628636ee4575a1bb3affbafaa3110b" target="_blank">Watch Project Video (Bilibili)</a></p>
                     </div>
@@ -555,11 +1349,13 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> RTK-GPS, IMU, PID Control, Kinematic Modeling, CAN Bus, STM32, C/C++</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/2-1.png" alt="Autonomous Sprayer Image 1">
-                            <img src="pics/2-2.png" alt="Autonomous Sprayer Image 2">
-                            <img src="pics/2-3.png" alt="Autonomous Sprayer Image 3">
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/2-1.png" alt="Autonomous sprayer 1"></div>
+                                <div class="media-scroll-item"><img src="pics/2-2.png" alt="Autonomous sprayer 2"></div>
+                                <div class="media-scroll-item"><img src="pics/2-3.png" alt="Autonomous sprayer 3"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/BV1h3411E7Sr" target="_blank">Watch Project Video (Bilibili)</a></p>
                     </div>
@@ -577,11 +1373,15 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> ROS, UAV, RGBD Camera, LiDAR, VIO, SLAM (VINS-Mono, ORB-SLAM2), 3D Reconstruction, PX4, C++</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/uav-1.jpg" alt="Indoor UAV Project Image 1">
-                            <img src="pics/uav-2.png" alt="Indoor UAV Project Image 2">
-                            <img src="pics/uav-3.jpg" alt="Indoor UAV Project Image 3">
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/uav-1.jpg" alt="Indoor UAV 1"></div>
+                                <div class="media-scroll-item"><img src="pics/uav-2.png" alt="Indoor UAV 2"></div>
+                                <div class="media-scroll-item"><img src="pics/uav-3.jpg" alt="Indoor UAV 3"></div>
+                                <div class="media-scroll-item"><img src="pics/UAV_project_IMG20260609175018.jpg" alt="UAV field test 1"></div>
+                                <div class="media-scroll-item"><img src="pics/UAV_project_IMG20260609175225.jpg" alt="UAV field test 2"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/BV1xD4y1V7Gp" target="_blank">Watch Project Video (Bilibili)</a></p>
                     </div>
@@ -598,12 +1398,13 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Gazebo, SLAM, Path Planning, Computer Vision, Mecanum Wheels, C++, Python, LiDAR, IMU</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/rm-1.png" alt="RoboMaster Robot Image 1">
-                            <img src="pics/rm-2.png" alt="RoboMaster Robot Image 2">
-                            <img src="pics/rm-3.jpg" alt="RoboMaster Robot Image 3">
-
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/rm-1.png" alt="RoboMaster robot 1"></div>
+                                <div class="media-scroll-item"><img src="pics/rm-2.png" alt="RoboMaster robot 2"></div>
+                                <div class="media-scroll-item"><img src="pics/rm-3.jpg" alt="RoboMaster robot 3"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/bv1FF411n7Y7" target="_blank">Watch Project Video (Bilibili)</a></p>
                     </div>
@@ -617,12 +1418,13 @@
                     </ul>
                     <p class="tech-stack"><strong>Key Technologies:</strong> ROS, Path Planning, State Machines, Embedded Control, LiDAR, IMU, C/C++</p>
                     <div class="project-media-gallery">
-                        <h4>Media:</h4>
-                        <div class="image-container">
-                            <img src="pics/car-3.jpg" alt="Smart Car Competition Image 1">
-                            <img src="pics/car-2.jpg" alt="Smart Car Competition Image 2">
-                            <img src="pics/car-1.jpg" alt="Smart Car Competition Image 3">
-
+                        <h4>Media <span class="scroll-hint">scroll →</span></h4>
+                        <div class="media-scroll-wrap">
+                            <div class="media-scroll">
+                                <div class="media-scroll-item"><img src="pics/car-3.jpg" alt="Smart car 1"></div>
+                                <div class="media-scroll-item"><img src="pics/car-2.jpg" alt="Smart car 2"></div>
+                                <div class="media-scroll-item"><img src="pics/car-1.jpg" alt="Smart car 3"></div>
+                            </div>
                         </div>
                         <p><a href="https://www.bilibili.com/video/BV1wf4y1N79E" target="_blank">Watch Project Video (Bilibili)</a></p>
                     </div>
