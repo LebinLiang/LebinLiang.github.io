@@ -884,33 +884,41 @@
             }
 
             .sidebar .profile {
-                display: flex;
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: auto auto;
+                column-gap: 14px;
+                row-gap: 4px;
                 align-items: center;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 4px;
+                text-align: left;
+                width: fit-content;
+                max-width: 100%;
+                margin: 0 auto 4px;
             }
 
             .sidebar .profile img {
-                width: 96px;
-                height: 96px;
-                margin-bottom: 12px;
+                grid-row: 1 / span 3;
+                grid-column: 1;
+                width: 88px;
+                height: 88px;
+                margin-bottom: 0;
             }
 
             .sidebar .profile h1 {
-                font-size: 1.35em;
-                margin-bottom: 4px;
+                grid-column: 2;
+                font-size: 1.25em;
+                margin-bottom: 0;
                 min-width: 0;
             }
 
             .sidebar .profile .role-title {
-                font-size: 0.78em;
-                margin-bottom: 4px;
+                grid-column: 2;
+                font-size: 0.72em;
+                margin-bottom: 0;
             }
 
             .sidebar .profile .affiliation {
-                font-size: 0.82em;
+                grid-column: 2;
+                font-size: 0.78em;
                 margin-bottom: 0;
             }
 
@@ -1106,12 +1114,11 @@
             .sidebar { padding: 16px 12px; }
 
             .sidebar .profile img {
-                width: 88px;
-                height: 88px;
-                margin-bottom: 10px;
+                width: 72px;
+                height: 72px;
             }
 
-            .sidebar .profile h1 { font-size: 1.2em; }
+            .sidebar .profile h1 { font-size: 1.1em; }
 
             .sidebar .social-links {
                 grid-template-columns: 1fr;
